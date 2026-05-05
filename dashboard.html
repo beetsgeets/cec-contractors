@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | CEC Contractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body" data-page="dashboard">
+  <div class="dash-layout">
+    <aside class="dash-sidebar">
+      <div class="brand">CEC Admin</div>
+      <nav class="dash-nav" aria-label="Dashboard sections">
+        <a href="#" data-panel="content" class="is-active">Site content</a>
+        <a href="#" data-panel="portfolio">Portfolio</a>
+        <a href="#" data-panel="services">Services</a>
+      </nav>
+      <p style="margin-top:2rem;font-size:0.85rem;opacity:0.8;">
+        <a href="index.html" style="color:#cde;">View public site</a>
+      </p>
+      <button type="button" class="btn btn-outline btn-sm" id="logoutBtn" style="margin-top:1rem;width:100%;border-color:rgba(255,255,255,0.35);color:#fff;">
+        Sign out
+      </button>
+    </aside>
+    <div class="dash-main">
+      <header class="dash-header">
+        <h1>Dashboard</h1>
+        <p style="margin:0;color:var(--color-muted);font-size:0.95rem;">Changes save to Supabase and appear on the public site after the next content refresh (reload or automatic refresh).</p>
+      </header>
+
+      <section id="panel-content" class="dash-section is-visible" aria-labelledby="dash-content-h">
+        <h2 id="dash-content-h" class="section-title" style="font-size:1.35rem;margin-bottom:1rem;">Site text (<code>site_content</code>)</h2>
+        <p style="color:var(--color-muted);margin-top:0;">Edit any cell and click <strong>Save</strong> on that row. Keys match <code>page | section | content_key</code> in the database.</p>
+        <div id="contentEditorStatus" class="admin-msg" hidden></div>
+        <p style="margin:1rem 0;">
+          <button type="button" class="btn btn-ghost btn-sm" id="refreshSiteContentBtn">Reload table</button>
+        </p>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th>Section</th>
+                <th>Key</th>
+                <th>Value</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="siteContentBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="panel-portfolio" class="dash-section" aria-labelledby="dash-port-h">
+        <h2 id="dash-port-h" class="section-title" style="font-size:1.35rem;margin-bottom:1rem;">Portfolio</h2>
+        <div id="portfolioEditorStatus" class="admin-msg" hidden></div>
+        <p style="margin:1rem 0;">
+          <button type="button" class="btn btn-ghost btn-sm" id="refreshPortfolioBtn">Reload list</button>
+        </p>
+        <form id="portfolioAddForm" class="card" style="margin-bottom:1.5rem;">
+          <h3 style="margin-top:0;font-family:var(--font-display);color:var(--color-primary);">Add portfolio item</h3>
+          <div class="form-group">
+            <label for="newPTitle">Title</label>
+            <input id="newPTitle" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="newPDesc">Description</label>
+            <textarea id="newPDesc" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="newPCat">Category (optional)</label>
+            <input id="newPCat" type="text" placeholder="Finish, Commercial, …" />
+          </div>
+          <div class="form-group">
+            <label for="newPFile">Image file</label>
+            <input id="newPFile" type="file" accept="image/*" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Add item</button>
+        </form>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Thumb</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Order</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="portfolioBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="panel-services" class="dash-section" aria-labelledby="dash-svc-h">
+        <h2 id="dash-svc-h" class="section-title" style="font-size:1.35rem;margin-bottom:1rem;">Services</h2>
+        <div id="servicesEditorStatus" class="admin-msg" hidden></div>
+        <p style="margin:1rem 0;">
+          <button type="button" class="btn btn-ghost btn-sm" id="refreshServicesBtn">Reload list</button>
+        </p>
+        <form id="serviceAddForm" class="card" style="margin-bottom:1.5rem;">
+          <h3 style="margin-top:0;font-family:var(--font-display);color:var(--color-primary);">Add service</h3>
+          <div class="form-group">
+            <label for="newSTitle">Title</label>
+            <input id="newSTitle" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="newSDesc">Description</label>
+            <textarea id="newSDesc" rows="2" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="newSIcon">Icon classes (Font Awesome)</label>
+            <input id="newSIcon" type="text" value="fas fa-wrench" placeholder="fas fa-hammer" />
+          </div>
+          <button type="submit" class="btn btn-primary">Add service</button>
+        </form>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Icon class</th>
+                <th>Order</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="servicesBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/admin.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Netlify configuration for CEC Contractors (static site + generated config)
+# See README.md for full setup.
+
+[build]
+  command = "node scripts/build-config.js"
+  publish = "."
+
+# Optional: pin Node for build script
+[build.environment]
+  NODE_VERSION = "20"

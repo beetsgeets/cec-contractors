@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About CEC Contractors — family craftsmanship in Northeast Ohio." />
+  <title>About | CEC Contractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="index.html">CEC <span>Contractors</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+        <i class="fas fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p class="content-status" data-content-status hidden></p>
+    <section class="section">
+      <h1 class="section-title">About CEC Contractors</h1>
+      <p class="section-lead" data-site-content="about|intro|lead">
+        We are a family-rooted contracting company: formerly Cutting Edge Carpentry, now CEC Contractors — building on 25 years of family craftsmanship with a fresh name and the same standards.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h2 class="section-title" style="font-size:1.5rem;">Our story</h2>
+          <div data-site-content="about|story|body">
+            <p>CEC Contractors continues a legacy of honest work and meticulous job sites. For <strong>25 years combined</strong> our team has refined trim, restoration, and commercial interiors; we have operated as <strong>CEC Contractors</strong> for <strong>four years</strong>, pairing modern scheduling with old-school pride in the fit and finish.</p>
+            <p><em>CEC Carpentry</em> may appear on older estimates or references — it reflects the same crew and values you have trusted for years.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h2 class="section-title" style="font-size:1.5rem;">Who you’ll meet</h2>
+          <div data-site-content="about|team|body">
+            <p><strong>Michael Mishaga</strong> — pricing, estimates, and day-to-day client care. Phone <a href="tel:+12163093631">216-309-3631</a>. Email <a href="mailto:mike@cutting-edgecarpentry.com">mike@cutting-edgecarpentry.com</a></p>
+            <p><strong>Matt Mishaga</strong> — field leadership and project coordination. Email <a href="mailto:matt@cutting-edgecarpentry.com">matt@cutting-edgecarpentry.com</a></p>
+          </div>
+          <p style="margin-top:1rem;color:var(--color-muted);" data-site-content="about|credentials|note">Licensed and insured. References available on request.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div>
+        <div class="footer-brand">CEC Contractors</div>
+        <p style="margin:0.35rem 0 0;font-size:0.92rem;opacity:0.9;" data-site-content="global|footer|tagline">Northeast Ohio · Licensed &amp; insured · Finish · Restoration · Contracting</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+12163093631">216-309-3631</a>
+        <a href="https://www.facebook.com/share/19jFH5ZxBr/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="index.html">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

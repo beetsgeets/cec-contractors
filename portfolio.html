@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio — CEC Contractors." />
+  <title>Portfolio | CEC Contractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="portfolio">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="index.html">CEC <span>Contractors</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+        <i class="fas fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p class="content-status" data-content-status hidden></p>
+    <section class="section">
+      <h1 class="section-title">Portfolio</h1>
+      <p class="section-lead" data-site-content="portfolio|intro|lead">
+        Selected finish, restoration, and commercial work. Images and copy are managed from the admin dashboard.
+      </p>
+      <div id="portfolio-mount" class="portfolio-grid" aria-live="polite">
+        <p class="content-status">Loading portfolio…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div>
+        <div class="footer-brand">CEC Contractors</div>
+        <p style="margin:0.35rem 0 0;font-size:0.92rem;opacity:0.9;" data-site-content="global|footer|tagline">Northeast Ohio · Licensed &amp; insured · Finish · Restoration · Contracting</p>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html">Request a consultation</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

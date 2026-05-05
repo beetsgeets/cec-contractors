@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact CEC Contractors — Northeast Ohio." />
+  <title>Contact | CEC Contractors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="index.html">CEC <span>Contractors</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+        <i class="fas fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p class="content-status" data-content-status hidden></p>
+    <section class="section">
+      <h1 class="section-title">Contact</h1>
+      <p class="section-lead" data-site-content="contact|intro|lead">
+        Tell us about your project, timeline, and location — we will respond with clear next steps.
+      </p>
+      <div class="contact-grid">
+        <div class="card">
+          <h2 class="section-title" style="font-size:1.45rem;">Reach us</h2>
+          <div class="contact-lines">
+            <p><i class="fas fa-phone" aria-hidden="true"></i><span><strong>Michael Mishaga</strong> — <a href="tel:+12163093631">216-309-3631</a></span></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i><span><a href="mailto:mike@cutting-edgecarpentry.com">mike@cutting-edgecarpentry.com</a></span></p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i><span><a href="mailto:matt@cutting-edgecarpentry.com">matt@cutting-edgecarpentry.com</a></span></p>
+            <p><i class="fab fa-facebook" aria-hidden="true"></i><span><a href="https://www.facebook.com/share/19jFH5ZxBr/" target="_blank" rel="noopener noreferrer">Facebook</a></span></p>
+            <p><i class="fas fa-location-dot" aria-hidden="true"></i><span>Service area: Cuyahoga &amp; Lake counties — Northeast Ohio</span></p>
+          </div>
+          <p style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(30,42,58,0.08);color:var(--color-muted);">
+            <strong>Hours:</strong> Monday–Friday 7am–5pm, and by appointment.
+          </p>
+        </div>
+        <div class="card">
+          <h2 class="section-title" style="font-size:1.45rem;">Send a message</h2>
+          <!-- Replace YOURFORMID with your Formspree form ID: https://formspree.io -->
+          <form class="contact-form" action="https://formspree.io/f/YOURFORMID" method="POST">
+            <div class="form-group">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" type="text" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="cf-phone">Phone</label>
+              <input id="cf-phone" type="tel" name="phone" autocomplete="tel" />
+            </div>
+            <div class="form-group">
+              <label for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" required placeholder="Project type, location, and timeline."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="map-wrap" style="margin-top:2rem;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(30,42,58,0.08);height:300px;">
+        <iframe title="Northeast Ohio service area" loading="lazy" style="width:100%;height:100%;border:0;display:block;"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-82.95%2C41.25%2C-80.95%2C41.85&amp;layer=mapnik&amp;marker=41.4993%2C-81.6944"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div>
+        <div class="footer-brand">CEC Contractors</div>
+        <p style="margin:0.35rem 0 0;font-size:0.92rem;opacity:0.9;" data-site-content="global|footer|tagline">Northeast Ohio · Licensed &amp; insured · Finish · Restoration · Contracting</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+12163093631">216-309-3631</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

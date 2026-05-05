@@ -1,0 +1,8 @@
+# If you paste real Supabase keys into js/config.js, uncomment the line below
+# before pushing to a public Git host:
+# js/config.js
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log

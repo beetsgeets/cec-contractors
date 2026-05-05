@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CEC Contractors — finish carpentry, restoration, and contracting in Northeast Ohio." />
+  <title>CEC Contractors | Northeast Ohio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="logo" href="index.html">CEC <span>Contractors</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+        <i class="fas fa-bars" aria-hidden="true"></i><span class="sr-only">Menu</span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <p class="content-status container" data-content-status hidden></p>
+
+    <section class="hero" aria-label="Welcome">
+      <div class="hero-inner">
+        <h1 data-site-content="home|hero|headline">Built for detail. Trusted in Northeast Ohio.</h1>
+        <p class="tagline" data-site-content="home|hero|subtitle">
+          CEC Contractors delivers high-end finish work, careful restoration, and dependable contracting across Cuyahoga &amp; Lake counties — building on decades of family craftsmanship.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="contact.html"><span data-site-content="home|hero|cta_primary">Get a Free Estimate</span></a>
+          <a class="btn btn-outline" href="portfolio.html">View portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="highlights-title">
+      <h2 id="highlights-title" class="section-title" data-site-content="home|highlights|heading">Why homeowners &amp; businesses choose us</h2>
+      <p class="section-lead" data-site-content="home|highlights|lead">
+        Licensed and insured, with clear communication from estimate to punch list.
+      </p>
+      <div class="grid-3">
+        <div class="card highlight-card">
+          <h3 data-site-content="home|highlights|card1_title">Finish that lasts</h3>
+          <p data-site-content="home|highlights|card1_body">Trim, built-ins, and stair details executed with patience and precision.</p>
+        </div>
+        <div class="card highlight-card">
+          <h3 data-site-content="home|highlights|card2_title">Restoration respect</h3>
+          <p data-site-content="home|highlights|card2_body">Historical fabric treated thoughtfully — repairs that belong in the room.</p>
+        </div>
+        <div class="card highlight-card">
+          <h3 data-site-content="home|highlights|card3_title">Coordinated crews</h3>
+          <p data-site-content="home|highlights|card3_body">Commercial and residential schedules kept on track with trusted trade partners.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div>
+        <div class="footer-brand">CEC Contractors</div>
+        <p style="margin:0.35rem 0 0;font-size:0.92rem;opacity:0.9;" data-site-content="global|footer|tagline">Northeast Ohio · Licensed &amp; insured · Finish · Restoration · Contracting</p>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+12163093631">216-309-3631</a>
+        <a href="https://www.facebook.com/share/19jFH5ZxBr/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="admin.html" style="opacity:0.65;font-size:0.85rem;">Staff login</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
