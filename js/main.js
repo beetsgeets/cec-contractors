@@ -1,14 +1,11 @@
 /**
  * CEC Contractors — public site
- * Loads copy, services, and portfolio from Supabase after DOM ready.
+ * Navigation and layout helpers. Wire a CMS or API to populate [data-site-content],
+ * #services-mount, and #portfolio-mount when ready.
  */
 
 (function () {
   "use strict";
-
-  var REFRESH_MS = 120000; // optional background refresh (2 min)
-  var contentMap = {};
-  var refreshTimer;
 
   function $(sel, root) {
     return (root || document).querySelector(sel);
@@ -24,14 +21,15 @@
     el.hidden = !message;
   }
 
-  /** Build map key: page|section|content_key */
+  /** Build map key: page|section|content_key — same shape many headless CMS exports use. */
   function rowKey(row) {
     return row.page + "|" + row.section + "|" + row.content_key;
   }
 
+  /** Apply CMS rows to elements with matching data-site-content. */
   function applySiteContent(rows) {
-    contentMap = {};
-    rows.forEach(function (row) {
+    var contentMap = {};
+    (rows || []).forEach(function (row) {
       contentMap[rowKey(row)] = row.content_value;
     });
 
@@ -123,7 +121,6 @@
       .replace(/>/g, "&gt;");
   }
 
-  /** Stable sort for site_content (avoids chained .order() / comma encoding issues in REST). */
   function sortSiteContentRows(rows) {
     return rows.slice().sort(function (a, b) {
       var c =
@@ -137,7 +134,6 @@
     });
   }
 
-  /** Allow only safe Font Awesome–style class tokens from CMS. */
   function safeIconClass(s) {
     var t = String(s || "").trim();
     if (!/^[a-z0-9 \-_]+$/i.test(t) || t.length > 120) return "fas fa-wrench";
@@ -174,93 +170,24 @@
     });
   }
 
-  function showConfigMessage(statusEl) {
-    if (statusEl) {
-      setStatus(
-        statusEl,
-        "Unable to load live content: Supabase is not configured. Copy js/config.example.js to js/config.js and add your project URL and anon key, then refresh.",
-        true
-      );
-    }
-  }
-
-  /**
-   * Load all public data from Supabase.
-   * @param {boolean} silent — if true, do not flash "Loading..."
-   */
-  function loadPublicData(silent) {
-    var sb = getSupabaseClient();
-    var statusEls = $$("[data-content-status]");
-    var primaryStatus = statusEls[0];
-
-    if (!sb) {
-      statusEls.forEach(function (el) {
-        showConfigMessage(el);
-      });
-      return;
-    }
-
-    if (!silent && primaryStatus) {
-      setStatus(primaryStatus, "Loading…", false);
-      primaryStatus.hidden = false;
-    }
-
-    sb.from("site_content")
-      .select("id,page,section,content_key,content_value")
-      .then(function (res) {
-        if (res.error) throw res.error;
-        applySiteContent(sortSiteContentRows(res.data || []));
-        statusEls.forEach(function (el) {
-          setStatus(el, "", false);
-        });
-
-        var servicesEl = $("#services-mount");
-        var portfolioEl = $("#portfolio-mount");
-
-        var next = Promise.resolve();
-        if (servicesEl) {
-          next = sb
-            .from("services")
-            .select("id,title,description,icon_class,order_index")
-            .order("order_index", { ascending: true })
-            .then(function (r2) {
-              if (r2.error) throw r2.error;
-              renderServices(servicesEl, r2.data || []);
-            });
-        }
-        return next.then(function () {
-          if (!portfolioEl) return null;
-          return sb
-            .from("portfolio_items")
-            .select("id,title,description,image_url,category,order_index,created_at")
-            .order("order_index", { ascending: true })
-            .then(function (r3) {
-              if (r3.error) throw r3.error;
-              renderPortfolio(portfolioEl, r3.data || []);
-            });
-        });
-      })
-      .catch(function (err) {
-        console.error("[CEC] Load error", err);
-        statusEls.forEach(function (el) {
-          setStatus(el, "Unable to load content. Please refresh or try again later.", true);
-        });
-      });
-  }
-
-  function onVisibleRefresh() {
-    if (document.visibilityState === "visible") {
-      loadPublicData(true);
-    }
+  /** Clear loading banners when not fetching remotely (optional CMS hook). */
+  function clearStaticLoadHints() {
+    $$("[data-content-status]").forEach(function (el) {
+      setStatus(el, "", false);
+    });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
-    loadPublicData(false);
-    document.addEventListener("visibilitychange", onVisibleRefresh);
-    if (refreshTimer) clearInterval(refreshTimer);
-    refreshTimer = setInterval(function () {
-      loadPublicData(true);
-    }, REFRESH_MS);
+    clearStaticLoadHints();
   });
+
+  /** Optional hooks for CMS scripts: window.CEC_PUBLIC.applySiteContent(rows), etc. */
+  window.CEC_PUBLIC = {
+    applySiteContent: applySiteContent,
+    sortSiteContentRows: sortSiteContentRows,
+    renderServices: renderServices,
+    renderPortfolio: renderPortfolio,
+    setStatus: setStatus,
+  };
 })();

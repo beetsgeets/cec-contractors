@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="cec:github-repo" content="YOUR_GITHUB_USERNAME/cec-contractors" />
+  <meta name="cec:github-branch" content="main" />
   <title>Dashboard | CEC Contractors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,12 +30,12 @@
     <div class="dash-main">
       <header class="dash-header">
         <h1>Dashboard</h1>
-        <p style="margin:0;color:var(--color-muted);font-size:0.95rem;">Changes save to Supabase and appear on the public site after the next content refresh (reload or automatic refresh).</p>
+        <p style="margin:0;color:var(--color-muted);font-size:0.95rem;">Publish updates from Netlify CMS at <strong>/cms/</strong>. This dashboard preview may be wired to Git-backed content later.</p>
       </header>
 
       <section id="panel-content" class="dash-section is-visible" aria-labelledby="dash-content-h">
-        <h2 id="dash-content-h" class="section-title" style="font-size:1.35rem;margin-bottom:1rem;">Site text (<code>site_content</code>)</h2>
-        <p style="color:var(--color-muted);margin-top:0;">Edit any cell and click <strong>Save</strong> on that row. Keys match <code>page | section | content_key</code> in the database.</p>
+        <h2 id="dash-content-h" class="section-title" style="font-size:1.35rem;margin-bottom:1rem;">Site text (CMS)</h2>
+        <p style="color:var(--color-muted);margin-top:0;">Keys match <code>page | section | content_key</code> in Markdown under <code>content/pages/</code>. Edit via Netlify CMS.</p>
         <div id="contentEditorStatus" class="admin-msg" hidden></div>
         <p style="margin:1rem 0;">
           <button type="button" class="btn btn-ghost btn-sm" id="refreshSiteContentBtn">Reload table</button>
@@ -137,6 +139,10 @@
     </div>
   </div>
 
+  <script src="js/js-yaml.min.js"></script>
+  <script src="js/cms-config.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/cms-loader.js" defer></script>
   <script src="js/admin.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
-# If you paste real Supabase keys into js/config.js, uncomment the line below
-# before pushing to a public Git host:
-# js/config.js
+# Optional generated CMS overrides (also safe to commit defaults):
+# js/cms-config.js
 
 # OS / editor
 .DS_Store

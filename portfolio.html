@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="cec:github-repo" content="YOUR_GITHUB_USERNAME/cec-contractors" />
+  <meta name="cec:github-branch" content="main" />
   <meta name="description" content="Portfolio — CEC Contractors." />
   <title>Portfolio | CEC Contractors</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +38,7 @@
     <section class="section">
       <h1 class="section-title">Portfolio</h1>
       <p class="section-lead" data-site-content="portfolio|intro|lead">
-        Selected finish, restoration, and commercial work. Images and copy are managed from the admin dashboard.
+        Selected finish, restoration, and commercial work. Images and copy are managed from Netlify CMS.
       </p>
       <div id="portfolio-mount" class="portfolio-grid" aria-live="polite">
         <p class="content-status">Loading portfolio…</p>
@@ -56,6 +58,9 @@
     </div>
   </footer>
 
+  <script src="js/js-yaml.min.js"></script>
+  <script src="js/cms-config.js"></script>
   <script src="js/main.js" defer></script>
+  <script src="js/cms-loader.js" defer></script>
 </body>
 </html>

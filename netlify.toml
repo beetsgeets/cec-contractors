@@ -1,3 +1,8 @@
+[[redirects]]
+from = "/cms/*"
+to = "/cms/index.html"
+status = 200
+
 # Netlify configuration for CEC Contractors (static site + generated config)
 # See README.md for full setup.
 
@@ -8,3 +13,27 @@
 # Optional: pin Node for build script
 [build.environment]
   NODE_VERSION = "20"
+
+# ---------------------------------------------------------------------------
+# Netlify Identity (must run before other redirects — do not rewrite away).
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/.netlify/identity/*"
+  to = "/.netlify/identity/:splat"
+  status = 200
+  force = false
+
+# ---------------------------------------------------------------------------
+# Headers: discourage long-lived CDN/browser cache for CMS entry + config.
+# ---------------------------------------------------------------------------
+
+[[headers]]
+  for = "/cms/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/cms/config.yml"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"

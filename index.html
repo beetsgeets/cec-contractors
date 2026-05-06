@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="cec:github-repo" content="YOUR_GITHUB_USERNAME/cec-contractors" />
+  <meta name="cec:github-branch" content="main" />
   <meta name="description" content="CEC Contractors — finish carpentry, restoration, and contracting in Northeast Ohio." />
   <title>CEC Contractors | Northeast Ohio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -78,11 +80,31 @@
       <div class="footer-links">
         <a href="tel:+12163093631">216-309-3631</a>
         <a href="https://www.facebook.com/share/19jFH5ZxBr/" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="admin.html" style="opacity:0.65;font-size:0.85rem;">Staff login</a>
+        <a href="/cms/" style="opacity:0.65;font-size:0.85rem;">Staff login</a>
       </div>
     </div>
   </footer>
 
+  <script src="js/js-yaml.min.js"></script>
+  <script src="js/cms-config.js"></script>
   <script src="js/main.js" defer></script>
+  <script src="js/cms-loader.js" defer></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    window.netlifyIdentity = window.netlifyIdentity || {};
+
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        if (window.location.hash.includes("invite_token") ||
+            window.location.hash.includes("confirmation_token") ||
+            window.location.hash.includes("recovery_token")) {
+
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/cms/";
+          });
+        }
+      }
+    });
+  </script>
 </body>
 </html>
