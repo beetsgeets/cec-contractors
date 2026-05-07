@@ -1,0 +1,303 @@
+/*
+ * Phase 1 — CEC Contractors admin dashboard (Netlify Identity + Git Gateway).
+ */
+
+:root {
+  --dash-bg: #f0f2f5;
+  --dash-card: #ffffff;
+  --dash-primary: #1877f2;
+  --dash-primary-hover: #166fe5;
+  --dash-text: #1c1e21;
+  --dash-muted: #65676b;
+  --dash-border: #e4e6eb;
+  --dash-radius: 12px;
+  --dash-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.dash-app {
+  margin: 0;
+  font-family: "Segoe UI Historic", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--dash-bg);
+  color: var(--dash-text);
+  min-height: 100vh;
+  line-height: 1.45;
+}
+
+.dash-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--dash-card);
+  border-bottom: 1px solid var(--dash-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dash-brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--dash-primary);
+}
+
+.dash-userarea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dash-email {
+  font-size: 0.9rem;
+  color: var(--dash-muted);
+}
+
+.dash-btn {
+  appearance: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.dash-btn-primary {
+  background: var(--dash-primary);
+  color: #fff;
+}
+
+.dash-btn-primary:hover {
+  background: var(--dash-primary-hover);
+}
+
+.dash-btn-ghost {
+  background: var(--dash-bg);
+  color: var(--dash-text);
+  border: 1px solid var(--dash-border);
+}
+
+.dash-btn-ghost:hover {
+  background: #e7e9ed;
+}
+
+.dash-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.75rem 1.25rem 3rem;
+}
+
+.dash-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.dash-tile {
+  background: var(--dash-card);
+  border-radius: var(--dash-radius);
+  padding: 1.5rem 1.25rem;
+  box-shadow: var(--dash-shadow);
+  border: 1px solid var(--dash-border);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  font-family: inherit;
+  color: inherit;
+}
+
+.dash-tile:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dash-tile:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dash-tile h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.dash-tile p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--dash-muted);
+}
+
+.dash-subgrid {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dash-border);
+}
+
+.dash-subgrid-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dash-muted);
+  margin: 0 0 0.75rem;
+}
+
+.dash-editor {
+  background: var(--dash-card);
+  border-radius: var(--dash-radius);
+  border: 1px solid var(--dash-border);
+  box-shadow: var(--dash-shadow);
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.dash-editor-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dash-border);
+}
+
+.dash-editor-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.dash-field {
+  margin-bottom: 1.25rem;
+}
+
+.dash-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+  color: var(--dash-text);
+}
+
+.dash-field input[type="text"],
+.dash-field input[type="number"],
+.dash-field textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.dash-field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.dash-list-block {
+  border: 1px dashed var(--dash-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: #fafbfc;
+}
+
+.dash-list-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: flex-start;
+}
+
+.dash-list-row input {
+  flex: 1;
+}
+
+.dash-object-card {
+  border: 1px solid var(--dash-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background: #fafbfc;
+}
+
+.dash-object-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--dash-muted);
+}
+
+.dash-muted {
+  color: var(--dash-muted);
+}
+
+.dash-footer-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.dash-error {
+  background: #ffebe9;
+  border: 1px solid #ff8182;
+  color: #9c1c1c;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin: 0 1.25rem 1rem;
+  font-size: 0.92rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dash-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #1c1e21;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  z-index: 200;
+}
+
+.dash-toast.is-visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.dash-loading {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--dash-muted);
+}
+
+[hidden] {
+  display: none !important;
+}
