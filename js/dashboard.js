@@ -12,6 +12,9 @@
   var accessToken;
   var currentEdit = null;
 
+  /** Direct .md portfolio items live here only. Listing: GET …/repos/{owner}/{repo}/contents/content/portfolio?ref={branch} (no trailing slash on path). */
+  var PORTFOLIO_ITEMS_DIR = "content/portfolio";
+
   function $(sel, root) {
     return (root || document).querySelector(sel);
   }
@@ -75,8 +78,17 @@
     );
   }
 
+  /** Strip leading/trailing slashes so /.netlify/git/github/v3/repos/.../contents/... never ends with / before ?ref= */
+  function normalizeRepoPath(pathInRepo) {
+    return String(pathInRepo || "")
+      .replace(/^\/+/g, "")
+      .replace(/\/+$/g, "")
+      .replace(/\/+/g, "/");
+  }
+
   function contentsURL(pathInRepo) {
-    var encPath = pathInRepo
+    var raw = normalizeRepoPath(pathInRepo);
+    var encPath = raw
       .split("/")
       .filter(function (p) {
         return p.length > 0;
@@ -104,7 +116,8 @@
   }
 
   async function githubPUT(pathInRepo, payload) {
-    var encPath = pathInRepo
+    var raw = normalizeRepoPath(pathInRepo);
+    var encPath = raw
       .split("/")
       .filter(function (p) {
         return p.length > 0;
@@ -542,29 +555,55 @@
     return d.innerHTML;
   }
 
+  /** Keeps listing to direct children of content/portfolio; ignores content/pages/portfolio.md and subfolders. */
+  function isDirectPortfolioMarkdownItem(entry) {
+    if (!entry || entry.type !== "file") {
+      return false;
+    }
+    var name = entry.name || "";
+    if (!/\.md$/i.test(name)) {
+      return false;
+    }
+    var path = entry.path || "";
+    if (
+      path === "content/pages/portfolio.md" ||
+      path.indexOf("content/pages/") === 0
+    ) {
+      return false;
+    }
+    var prefix = PORTFOLIO_ITEMS_DIR + "/";
+    if (path.indexOf(prefix) !== 0) {
+      return false;
+    }
+    var rest = path.slice(prefix.length);
+    if (rest.indexOf("/") >= 0 || !rest.length) {
+      return false;
+    }
+    return true;
+  }
+
   async function hydratePortfolioTiles() {
     var mount = $("#portfolioTiles");
     if (!mount) return;
     mount.innerHTML = '<div class="dash-loading">Loading portfolio files…</div>';
     try {
-      var listing = await githubGET("content/portfolio");
+      var listing = await githubGET(PORTFOLIO_ITEMS_DIR);
       if (!Array.isArray(listing)) {
+        console.error("Portfolio listing error:", listing);
         mount.innerHTML =
           '<p class="dash-muted" style="grid-column:1/-1;">No portfolio listing.</p>';
         return;
       }
       mount.innerHTML = "";
       listing
-        .filter(function (e) {
-          return e.type === "file" && /\.md$/i.test(e.name || "");
-        })
+        .filter(isDirectPortfolioMarkdownItem)
         .sort(function (a, b) {
           return String(a.name).localeCompare(String(b.name));
         })
         .forEach(function (entry) {
           var btn = document.createElement("button");
           btn.type = "button";
-          btn.className = "dash-tile";
+          btn.className = "dash-tile dash-portfolio-card";
           var title = String(entry.name).replace(/\.md$/i, "").replace(/-/g, " ");
           btn.innerHTML =
             "<h3>" +
