@@ -1,0 +1,10 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<section class="section page-head">
+  <div class="wrap narrow">
+    <h1 class="h1"><%= title %></h1>
+    <p class="lede"><%= (typeof message !== 'undefined' && message) ? message : 'That page isn’t here. It may have moved, or the link was mistyped.' %></p>
+    <p><a class="btn btn-navy" href="/work">See our work</a> <a class="btn btn-outline" href="/">Home</a></p>
+  </div>
+</section>
+<%- include('partials/footer') %>

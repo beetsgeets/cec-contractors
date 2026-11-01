@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<main class="wrap adm-main">
+  <div class="adm-top">
+    <h1 class="h2">Estimate requests</h1>
+    <nav class="filters"><a href="/admin/leads" <%= !archived ? 'aria-current="true"' : '' %>>New</a><a href="/admin/leads?archived=1" <%= archived ? 'aria-current="true"' : '' %>>Done</a></nav>
+  </div>
+  <p class="muted">Everything sent through the website form lands here, and is also emailed to <%= settings.lead_emails %>.</p>
+  <% if (!leads.length) { %>
+    <p class="notice"><%= archived ? 'Nothing marked done yet.' : 'No new requests. When someone fills out the form on the Contact page, it shows up here.' %></p>
+  <% } %>
+  <% leads.forEach(l => { %>
+    <article class="lead">
+      <div class="lead-head">
+        <h2 class="h3"><%= l.name || 'No name' %> <% if (l.town) { %><span class="muted">in <%= l.town %></span><% } %></h2>
+        <span class="muted"><%= fmtDate(l.created) %></span>
+      </div>
+      <p class="lead-contact">
+        <% if (l.phone) { %><a href="tel:<%= l.phone.replace(/\D/g,'') %>"><%= l.phone %></a><% } %>
+        <% if (l.email) { %><a href="mailto:<%= l.email %>"><%= l.email %></a><% } %>
+        <% if (l.project_type) { %><span class="pill pill-grey"><%= l.project_type %></span><% } %>
+        <% if (!l.emailed) { %><span class="pill pill-warn" title="The email didn’t go out, but the request is saved here.">Email not sent</span><% } %>
+      </p>
+      <p class="lead-msg"><%= l.message %></p>
+      <form method="post" action="/admin/leads/<%= l.id %>/archive" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="<%= archived ? '0' : '1' %>"><button class="btn btn-outline btn-sm" type="submit"><%= archived ? 'Move back to new' : 'Mark done' %></button></form>
+    </article>
+  <% }) %>
+</main>
+</body></html>

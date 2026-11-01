@@ -1,0 +1,63 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="section page-head">
+  <div class="wrap narrow">
+    <h1 class="h1"><%- t('about.title') %></h1>
+    <div class="prose lede"><%- t('about.body') %></div>
+  </div>
+</section>
+
+<section class="section section-cream how">
+  <div class="wrap">
+    <div class="how-grid">
+      <div class="how-text">
+        <h2 class="h2"><%- t('about.how.title') %></h2>
+        <dl class="how-list">
+          <% [1,2,3,4].forEach(n => { %>
+            <div class="how-item"><dt><%- t(`how.${n}.title`) %></dt><dd><%- t(`how.${n}.body`, { multi: false }) %></dd></div>
+          <% }) %>
+        </dl>
+      </div>
+      <% if (howPhoto && howJob) { %>
+      <figure class="how-photo">
+        <a href="/work/<%= howJob.slug %>"><img src="<%= img(howJob.slug, howPhoto.base, 'medium') %>" alt="<%= howPhoto.caption %>" loading="lazy" width="<%= howPhoto.w %>" height="<%= howPhoto.h %>"></a>
+        <figcaption><%= howPhoto.caption %> <a href="/work/<%= howJob.slug %>">See the job</a></figcaption>
+      </figure>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow about-facts">
+    <div>
+      <h2 class="h3"><%- t('about.area.title') %></h2>
+      <div class="prose"><%- t('about.area.body') %></div>
+    </div>
+    <div>
+      <h2 class="h3"><%- t('about.insured.title') %></h2>
+      <div class="prose"><%- t('about.insured.body') %></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-navy cred">
+  <div class="wrap narrow">
+    <h2 class="h2"><%- t('home.cred.title') %></h2>
+    <div class="prose lede"><%- t('home.cred.body') %></div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="wrap narrow">
+    <h2 class="h2"><%- t('home.cta.title') %></h2>
+    <div class="prose lede"><%- t('home.cta.body') %></div>
+    <div class="cta-actions">
+      <a class="btn btn-navy btn-lg" href="<%= tel(settings.phone_primary) %>">Call <%= settings.phone_primary_name %>, <%= settings.phone_primary %></a>
+      <a class="btn btn-outline btn-lg" href="/contact">Request an estimate</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

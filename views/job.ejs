@@ -1,0 +1,89 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<article class="job">
+  <% if (user) { %><div class="wrap"><p class="admin-note"><a class="btn btn-navy btn-sm" href="/admin/jobs/<%= job.id %>">Edit this job</a> <% if (!job.published) { %><span class="tag tag-draft">Hidden from visitors</span><% } %></p></div><% } %>
+  <header class="section page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="/work">Our work</a> <span aria-hidden="true">/</span> <a href="/work?type=<%= job.category %>"><%= job.category === 'commercial' ? 'Commercial' : 'Residential' %></a></p>
+      <h1 class="h1"><%= job.title %></h1>
+      <p class="job-meta">
+        <% if (job.client) { %><span><%= job.client %></span><% } %>
+        <span><%= job.town %></span>
+        <% if (job.year) { %><span><%= job.year %></span><% } %>
+        <% if (job.in_progress) { %><span class="tag tag-progress">In progress</span><% } %>
+      </p>
+      <% if (job.summary) { %><p class="lede narrow-text"><%= job.summary %></p><% } %>
+    </div>
+  </header>
+
+  <% if (cover) { %>
+  <div class="wrap">
+    <figure class="job-hero">
+      <a href="<%= img(job.slug, cover.base, 'large') %>" class="lb" data-caption="<%= cover.caption %>"><img src="<%= img(job.slug, cover.base, 'large') %>" alt="<%= cover.caption || job.title %>" width="<%= cover.w %>" height="<%= cover.h %>" fetchpriority="high"></a>
+      <% if (cover.caption) { %><figcaption><%= cover.caption %></figcaption><% } %>
+    </figure>
+  </div>
+  <% } %>
+
+  <div class="wrap job-body">
+    <div class="job-main">
+      <% if (job.body) { %><div class="prose"><%- job.body.split(/\n{2,}/).map(p => '<p>' + p.trim().replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])).replace(/\n/g,'<br>') + '</p>').join('') %></div><% } %>
+    </div>
+    <% if (job.scopeList.length) { %>
+    <aside class="job-scope">
+      <h2>What we did</h2>
+      <ul><% job.scopeList.forEach(s => { %><li><%= s %></li><% }) %></ul>
+    </aside>
+    <% } %>
+  </div>
+
+  <% const rest = photos.filter(p => !cover || p.id !== cover.id); if (rest.length) { %>
+  <div class="wrap">
+    <div class="gallery">
+      <% rest.forEach(p => { %>
+        <figure class="gallery-item <%= p.h > p.w ? 'is-portrait' : '' %>">
+          <a href="<%= img(job.slug, p.base, 'large') %>" class="lb" data-caption="<%= p.caption %>"><img src="<%= img(job.slug, p.base, 'medium') %>" alt="<%= p.caption || job.title %>" loading="lazy" width="<%= p.w %>" height="<%= p.h %>"></a>
+          <% if (p.caption) { %><figcaption><%= p.caption %></figcaption><% } %>
+        </figure>
+      <% }) %>
+    </div>
+  </div>
+  <% } %>
+
+  <% if (siblings.length) { %>
+  <section class="section section-cream">
+    <div class="wrap">
+      <h2 class="h2">Same house, other years</h2>
+      <div class="grid grid-3">
+        <% siblings.forEach(s => { %><%- include('partials/jobcard', { job: s }) %><% }) %>
+      </div>
+    </div>
+  </section>
+  <% } %>
+
+  <section class="section cta">
+    <div class="wrap narrow">
+      <h2 class="h2"><%- t('home.cta.title') %></h2>
+      <div class="prose lede"><%- t('home.cta.body') %></div>
+      <div class="cta-actions">
+        <a class="btn btn-navy btn-lg" href="<%= tel(settings.phone_primary) %>">Call <%= settings.phone_primary_name %>, <%= settings.phone_primary %></a>
+        <a class="btn btn-outline btn-lg" href="/contact">Request an estimate</a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="wrap job-nav" aria-label="More work">
+    <% if (prev) { %><a href="/work/<%= prev.slug %>"><span class="muted">Previous</span><span><%= prev.title %>, <%= prev.town %></span></a><% } else { %><span></span><% } %>
+    <% if (nxt) { %><a class="job-nav-next" href="/work/<%= nxt.slug %>"><span class="muted">Next</span><span><%= nxt.title %>, <%= nxt.town %></span></a><% } %>
+  </nav>
+</article>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox-close" type="button" aria-label="Close">×</button>
+  <button class="lightbox-prev" type="button" aria-label="Previous photo">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lightbox-next" type="button" aria-label="Next photo">›</button>
+</div>
+
+<%- include('partials/footer') %>

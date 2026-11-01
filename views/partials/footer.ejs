@@ -1,0 +1,33 @@
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-in">
+    <div class="footer-brand">
+      <img src="/img/logo-reverse.svg" alt="<%= settings.business_name %>" width="256" height="35">
+      <p><%- t('footer.tagline') %></p>
+    </div>
+    <div class="footer-col">
+      <h2>Talk to us</h2>
+      <p><a href="<%= tel(settings.phone_primary) %>"><%= settings.phone_primary %></a> <span class="muted"><%= settings.phone_primary_name %>, estimates and new projects</span></p>
+      <p><a href="<%= tel(settings.phone_secondary) %>"><%= settings.phone_secondary %></a> <span class="muted"><%= settings.phone_secondary_name %>, current clients</span></p>
+      <p><a href="mailto:<%= settings.email_primary %>"><%= settings.email_primary %></a></p>
+    </div>
+    <div class="footer-col">
+      <h2>Where we work</h2>
+      <p><%= settings.service_area %></p>
+      <p class="muted">Fully insured.</p>
+      <% if (settings.facebook_url) { %><p><a href="<%= settings.facebook_url %>" rel="noopener">Facebook</a></p><% } %>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© <%= new Date().getFullYear() %> <%= settings.business_name %> LLC</span>
+    <% if (user) { %><form method="post" action="/admin/logout" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="linkbtn" type="submit">Sign out</button></form><% } else { %><a href="/admin/login">Owner sign in</a><% } %>
+  </div>
+</footer>
+<div class="callbar">
+  <a class="btn btn-navy" href="<%= tel(settings.phone_primary) %>">Call <%= settings.phone_primary_name %></a>
+  <a class="btn btn-sky" href="/contact">Request an estimate</a>
+</div>
+<script src="/js/site.js?v=<%= v %>" defer></script>
+<% if (editMode) { %><script>window.CSRF = "<%= csrf %>";</script><script src="/js/edit.js?v=<%= v %>" defer></script><% } %>
+</body>
+</html>

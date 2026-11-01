@@ -1,0 +1,28 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="section page-head">
+  <div class="wrap">
+    <h1 class="h1"><%- t('work.title') %></h1>
+    <div class="prose lede narrow-text"><%- t('work.intro') %></div>
+    <nav class="filters" aria-label="Filter work">
+      <a href="/work" <%= !cat ? 'aria-current="true"' : '' %>>All</a>
+      <a href="/work?type=residential" <%= cat === 'residential' ? 'aria-current="true"' : '' %>>Residential</a>
+      <a href="/work?type=commercial" <%= cat === 'commercial' ? 'aria-current="true"' : '' %>>Commercial</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap">
+    <% if (!jobs.length) { %>
+      <p class="muted">No projects here yet.</p>
+    <% } else { %>
+    <div class="grid grid-3">
+      <% jobs.forEach(job => { %><%- include('partials/jobcard', { job }) %><% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

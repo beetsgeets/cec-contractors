@@ -1,0 +1,14 @@
+<%- include('../partials/head') %>
+<div class="auth">
+  <a href="/" class="auth-brand"><img src="/img/logo.svg" alt="<%= settings.business_name %>" width="256" height="35"></a>
+  <form method="post" action="/admin/login" class="form auth-form">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <h1 class="h2">Owner sign in</h1>
+    <% if (error) { %><p class="field-error" role="alert"><%= error %></p><% } %>
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required autofocus></div>
+    <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+    <button class="btn btn-navy btn-lg" type="submit">Sign in</button>
+    <p class="muted auth-foot">This is for <%= settings.business_name %> owners. Looking for the website? <a href="/">Go to the home page</a>.</p>
+  </form>
+</div>
+</body></html>

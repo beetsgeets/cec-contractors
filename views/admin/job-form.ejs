@@ -1,0 +1,120 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<main class="wrap adm-main adm-narrow">
+  <% const f = form || job || {}; const isNew = !job; %>
+  <div class="adm-top">
+    <h1 class="h2"><%= isNew ? 'Post a job' : 'Edit job' %></h1>
+    <% if (!isNew) { %><a class="btn btn-ghost btn-sm" href="/work/<%= job.slug %>">View on site</a><% } %>
+  </div>
+  <% if (typeof flash !== 'undefined' && flash) { %><p class="notice notice-ok" role="status"><%= flash %></p><% } %>
+  <% if (errors && Object.keys(errors).length) { %><p class="field-error" role="alert">Fix the highlighted fields below.</p><% } %>
+
+  <form method="post" action="<%= isNew ? '/admin/jobs/new' : '/admin/jobs/' + job.id %>?_csrf=<%= csrf %>" enctype="multipart/form-data" class="form adm-form" id="jobform">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+    <% if (isNew) { %>
+    <div class="field">
+      <label class="filebtn">Tap to add photos<small>Pick as many as you want. The first one becomes the cover; you can change the order after posting.</small><input id="photos" name="photos" type="file" accept="image/*" multiple></label>
+      <div class="preview" id="preview"></div>
+    </div>
+    <% } %>
+
+    <div class="field <%= errors && errors.title ? 'has-error' : '' %>">
+      <label for="title">What was the job?</label>
+      <input id="title" name="title" type="text" required value="<%= f.title || '' %>" placeholder="Kitchen remodel">
+      <% if (errors && errors.title) { %><p class="field-error"><%= errors.title %></p><% } %>
+    </div>
+    <div class="field-row">
+      <div class="field <%= errors && errors.town ? 'has-error' : '' %>">
+        <label for="town">Town</label>
+        <input id="town" name="town" type="text" required value="<%= f.town || '' %>" placeholder="Lakewood">
+        <% if (errors && errors.town) { %><p class="field-error"><%= errors.town %></p><% } %>
+      </div>
+      <div class="field">
+        <label for="year">Year</label>
+        <input id="year" name="year" type="number" inputmode="numeric" min="1990" max="2100" value="<%= f.year || '' %>">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="category">Type</label>
+        <select id="category" name="category">
+          <option value="residential" <%= (f.category || 'residential') === 'residential' ? 'selected' : '' %>>Residential</option>
+          <option value="commercial" <%= f.category === 'commercial' ? 'selected' : '' %>>Commercial</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="client">Business name <span class="muted">(businesses only)</span></label>
+        <input id="client" name="client" type="text" value="<%= f.client || '' %>" placeholder="Leave blank for a homeowner">
+        <p class="field-hint">Never put a homeowner’s name or address here.</p>
+      </div>
+    </div>
+    <div class="field">
+      <label for="summary">One-line summary</label>
+      <input id="summary" name="summary" type="text" maxlength="400" value="<%= f.summary || '' %>" placeholder="A full kitchen remodel with a custom ceiling box over the island.">
+    </div>
+    <div class="field">
+      <label for="body">About the job</label>
+      <textarea id="body" name="body" rows="7" placeholder="What the customer needed, what we did, anything we're proud of. A blank line starts a new paragraph."><%= f.body || '' %></textarea>
+    </div>
+    <div class="field">
+      <label for="scope">What we did <span class="muted">(one item per line)</span></label>
+      <textarea id="scope" name="scope" rows="5" placeholder="Cabinet installation&#10;Custom ceiling box&#10;Trim and finish carpentry"><%= f.scopeText !== undefined ? f.scopeText : (f.scope && !Array.isArray(f.scope) && typeof f.scope === 'string' && !f.scope.startsWith('[') ? f.scope : '') %></textarea>
+    </div>
+
+    <details class="adm-more" <%= (f.series || f.featured || f.in_progress || f.published === 0 || f.published === '0') ? 'open' : '' %>>
+      <summary>More options</summary>
+      <div class="checks">
+        <label><input type="checkbox" name="featured" value="1" <%= f.featured ? 'checked' : '' %>> Show on the home page (featured)</label>
+        <label><input type="checkbox" name="in_progress" value="1" <%= f.in_progress ? 'checked' : '' %>> Job is still in progress</label>
+        <label><input type="checkbox" name="published" value="0" <%= (f.published === 0 || f.published === '0') ? 'checked' : '' %>> Hide from visitors for now</label>
+      </div>
+      <div class="field">
+        <label for="series">Same house as other jobs? <span class="muted">(a shared label groups them)</span></label>
+        <input id="series" name="series" type="text" value="<%= f.series || '' %>" placeholder="e.g. cleveland-heights-house">
+      </div>
+    </details>
+
+    <% if (!isNew) { %>
+    <div class="field">
+      <label class="filebtn">Tap to add more photos<small>They’re added to the end; drag to reorder below after saving.</small><input id="photos" name="photos" type="file" accept="image/*" multiple></label>
+      <div class="preview" id="preview"></div>
+    </div>
+    <% } %>
+
+    <div class="adm-actions">
+      <button class="btn btn-navy btn-lg" type="submit" id="submit"><%= isNew ? 'Post to the site' : 'Save changes' %></button>
+      <a class="btn btn-ghost" href="/admin">Cancel</a>
+    </div>
+    <div class="uploading" id="uploading" hidden><div class="spinner"></div><p>Uploading photos and getting them ready. This can take a minute on a phone. Keep this page open.</p></div>
+  </form>
+
+  <% if (!isNew) { %>
+  <section class="adm-photos">
+    <h2 class="h3">Photos <span class="muted">(<%= photos.length %>)</span></h2>
+    <p class="muted">Drag to reorder. The star marks the cover photo. Captions are optional and show under the photo.</p>
+    <ul class="photogrid" id="photogrid" data-job="<%= job.id %>">
+      <% photos.forEach(p => { %>
+        <li class="photo <%= job.cover_photo_id === p.id ? 'is-cover' : '' %>" data-id="<%= p.id %>">
+          <div class="photo-img"><img src="<%= img(job.slug, p.base, 'thumb') %>" alt="" width="320" height="240" draggable="false"><button class="drag photo-drag" type="button" aria-label="Drag to reorder">⋮⋮</button></div>
+          <input class="photo-caption" type="text" placeholder="Caption (optional)" value="<%= p.caption %>" maxlength="300">
+          <div class="photo-actions">
+            <button type="button" class="linkbtn act-cover">★ <%= job.cover_photo_id === p.id ? 'Cover' : 'Make cover' %></button>
+            <button type="button" class="linkbtn act-delete">Delete</button>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <section class="adm-danger">
+    <form method="post" action="/admin/jobs/<%= job.id %>/delete" onsubmit="return confirm('Delete this job and all its photos from the website? This can’t be undone.');">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <button class="linkbtn danger" type="submit">Delete this job from the site</button>
+    </form>
+  </section>
+  <% } %>
+</main>
+<script>window.CSRF = "<%= csrf %>";</script>
+<script src="/js/admin.js?v=<%= v %>" defer></script>
+</body></html>

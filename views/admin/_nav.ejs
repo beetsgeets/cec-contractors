@@ -1,0 +1,13 @@
+<header class="adm-header">
+  <div class="wrap adm-header-in">
+    <a href="/admin" class="adm-brand"><img src="/img/mark.svg" alt="" width="36" height="19"> <span>Website admin</span></a>
+    <nav class="adm-nav">
+      <a href="/admin" <%= path === '/' ? 'aria-current="page"' : '' %>>Jobs</a>
+      <a href="/admin/leads" <%= path.startsWith('/leads') ? 'aria-current="page"' : '' %>>Estimate requests<%= newLeads ? ` (${newLeads})` : '' %></a>
+      <a href="/admin/settings" <%= path === '/settings' ? 'aria-current="page"' : '' %>>Settings</a>
+      <a href="/admin/help" <%= path === '/help' ? 'aria-current="page"' : '' %>>Help</a>
+      <a href="/">View site</a>
+    </nav>
+    <form method="post" action="/admin/logout" class="inline adm-signout"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="linkbtn" type="submit">Sign out</button></form>
+  </div>
+</header>

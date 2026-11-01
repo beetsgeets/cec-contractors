@@ -1,0 +1,32 @@
+# Render Blueprint for the CEC Contractors website.
+# One web service (always on) with a persistent disk that holds the database
+# and uploaded photos. Deploys automatically from the main branch.
+services:
+  - type: web
+    name: cec-contractors
+    runtime: node
+    plan: starter
+    region: ohio
+    buildCommand: npm ci --omit=dev
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    autoDeploy: true
+    disk:
+      name: cec-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /data
+      - key: SITE_URL
+        value: https://ceccontractors.com
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: MAIL_FROM
+        value: CEC Contractors <estimates@ceccontractors.com>
+      - key: MAIL_TO
+        value: mike@cutting-edgecarpentry.com, matt@cutting-edgecarpentry.com
+      - key: RESEND_API_KEY
+        sync: false

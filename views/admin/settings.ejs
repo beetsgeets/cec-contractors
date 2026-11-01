@@ -1,0 +1,75 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<main class="wrap adm-main adm-narrow">
+  <h1 class="h2">Settings</h1>
+  <% if (typeof flash !== 'undefined' && flash) { %><p class="notice notice-ok" role="status"><%= flash %></p><% } %>
+
+  <form method="post" action="/admin/settings" class="form adm-form">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <h2 class="h3">Contact details shown on the site</h2>
+    <div class="field-row">
+      <div class="field"><label for="phone_primary_name">Main contact’s name</label><input id="phone_primary_name" name="phone_primary_name" value="<%= settings.phone_primary_name %>"></div>
+      <div class="field"><label for="phone_primary">Main phone (new customers)</label><input id="phone_primary" name="phone_primary" value="<%= settings.phone_primary %>"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="phone_secondary_name">Second contact’s name</label><input id="phone_secondary_name" name="phone_secondary_name" value="<%= settings.phone_secondary_name %>"></div>
+      <div class="field"><label for="phone_secondary">Second phone (current clients)</label><input id="phone_secondary" name="phone_secondary" value="<%= settings.phone_secondary %>"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="email_primary">Main email</label><input id="email_primary" name="email_primary" type="email" value="<%= settings.email_primary %>"></div>
+      <div class="field"><label for="email_secondary">Second email</label><input id="email_secondary" name="email_secondary" type="email" value="<%= settings.email_secondary %>"></div>
+    </div>
+    <div class="field">
+      <label for="lead_emails">Send estimate requests to <span class="muted">(separate with commas)</span></label>
+      <input id="lead_emails" name="lead_emails" value="<%= settings.lead_emails %>">
+    </div>
+    <div class="field-row">
+      <div class="field"><label for="service_area">Service area</label><input id="service_area" name="service_area" value="<%= settings.service_area %>"></div>
+      <div class="field"><label for="facebook_url">Facebook page link</label><input id="facebook_url" name="facebook_url" value="<%= settings.facebook_url %>"></div>
+    </div>
+    <h2 class="h3">Business name</h2>
+    <div class="field-row">
+      <div class="field"><label for="business_name">Name</label><input id="business_name" name="business_name" value="<%= settings.business_name %>"></div>
+      <div class="field"><label for="former_name">Formerly</label><input id="former_name" name="former_name" value="<%= settings.former_name %>"></div>
+    </div>
+    <h2 class="h3">Home page photo</h2>
+    <div class="field-row">
+      <div class="field"><label for="hero_image">Photo <span class="muted">(leave blank to use the first featured job’s cover)</span></label><input id="hero_image" name="hero_image" value="<%= settings.hero_image %>" placeholder="job-link-name/01"><p class="field-hint">Type the job’s link name, a slash, and the photo number as it appears in the photo’s web address.</p></div>
+      <div class="field"><label for="hero_caption">Caption under the photo</label><input id="hero_caption" name="hero_caption" value="<%= settings.hero_caption %>"></div>
+    </div>
+    <input type="hidden" name="service_area_short" value="<%= settings.service_area_short %>">
+    <button class="btn btn-navy" type="submit">Save settings</button>
+  </form>
+
+  <section class="form adm-form">
+    <h2 class="h3">Who can sign in</h2>
+    <ul class="userlist">
+      <% users.forEach(u => { %>
+        <li><span><strong><%= u.name %></strong> <span class="muted"><%= u.email %></span></span>
+          <% if (u.id !== user.id) { %><form method="post" action="/admin/users/<%= u.id %>/delete" class="inline" onsubmit="return confirm('Remove this login?');"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="linkbtn danger" type="submit">Remove</button></form><% } else { %><span class="muted">(you)</span><% } %>
+        </li>
+      <% }) %>
+    </ul>
+    <form method="post" action="/admin/users">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <h3 class="h3" style="font-size:1.05rem">Add a login</h3>
+      <div class="field-row">
+        <div class="field"><label for="u-name">Name</label><input id="u-name" name="name" required></div>
+        <div class="field"><label for="u-email">Email</label><input id="u-email" name="email" type="email" required></div>
+      </div>
+      <div class="field"><label for="u-pass">Password (10+ characters)</label><input id="u-pass" name="password" type="password" minlength="10" autocomplete="new-password" required></div>
+      <button class="btn btn-outline" type="submit">Add login</button>
+    </form>
+  </section>
+
+  <form method="post" action="/admin/password" class="form adm-form">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <h2 class="h3">Change your password</h2>
+    <div class="field-row">
+      <div class="field"><label for="p-cur">Current password</label><input id="p-cur" name="current" type="password" autocomplete="current-password" required></div>
+      <div class="field"><label for="p-new">New password (10+ characters)</label><input id="p-new" name="password" type="password" minlength="10" autocomplete="new-password" required></div>
+    </div>
+    <button class="btn btn-outline" type="submit">Change password</button>
+  </form>
+</main>
+</body></html>

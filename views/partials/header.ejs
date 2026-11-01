@@ -1,0 +1,33 @@
+<% if (user) { %>
+<div class="editbar">
+  <div class="wrap editbar-in">
+    <span class="editbar-who">Signed in as <%= user.name %></span>
+    <% if (editMode) { %>
+      <span class="editbar-hint">Editing: click any text to change it, then save.</span>
+      <button class="btn btn-sky btn-sm" id="edit-save" type="button" disabled>Save changes</button>
+      <form method="post" action="/admin/edit-mode" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="0"><input type="hidden" name="back" value="<%= path %>"><button class="btn btn-ghost-light btn-sm" type="submit">Done</button></form>
+    <% } else { %>
+      <form method="post" action="/admin/edit-mode" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="1"><input type="hidden" name="back" value="<%= path %>"><button class="btn btn-ghost-light btn-sm" type="submit">Edit this page’s text</button></form>
+      <a class="btn btn-sky btn-sm" href="/admin/jobs/new">Post a job</a>
+      <a class="editbar-link" href="/admin">Admin<%= newLeads ? ` (${newLeads} new request${newLeads === 1 ? '' : 's'})` : '' %></a>
+    <% } %>
+  </div>
+</div>
+<% } %>
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="/" aria-label="<%= settings.business_name %> home"><img src="/img/logo.svg" alt="<%= settings.business_name %>" width="256" height="35"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/work" <%= path.startsWith('/work') ? 'aria-current="page"' : '' %>>Our work</a>
+      <a href="/services" <%= path === '/services' ? 'aria-current="page"' : '' %>>Services</a>
+      <a href="/about" <%= path === '/about' ? 'aria-current="page"' : '' %>>About</a>
+      <a href="/contact" <%= path === '/contact' ? 'aria-current="page"' : '' %>>Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a class="header-phone" href="<%= tel(settings.phone_primary) %>"><span class="header-phone-label">Call <%= settings.phone_primary_name %></span><span class="header-phone-num"><%= settings.phone_primary %></span></a>
+      <a class="btn btn-navy" href="/contact">Request an estimate</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" id="nav-toggle"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
+  </div>
+</header>
+<main id="main">

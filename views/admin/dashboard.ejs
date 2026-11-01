@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+<%- include('_nav') %>
+<main class="wrap adm-main">
+  <div class="adm-top">
+    <h1 class="h2">Jobs on the site</h1>
+    <a class="btn btn-navy btn-lg" href="/admin/jobs/new">Post a new job</a>
+  </div>
+  <p class="muted">Drag the handle to change the order jobs appear on the Our Work page. Jobs marked “in progress” always show first.</p>
+  <ul class="joblist" id="joblist">
+    <% jobs.forEach(j => { %>
+      <li class="joblist-item" data-id="<%= j.id %>">
+        <button class="drag" type="button" aria-label="Drag to reorder" title="Drag to reorder">⋮⋮</button>
+        <a class="joblist-thumb" href="/admin/jobs/<%= j.id %>"><% if (j.cover) { %><img src="<%= img(j.slug, j.cover.base, 'thumb') %>" alt="" width="120" height="90"><% } else { %><span class="card-noimg"></span><% } %></a>
+        <div class="joblist-text">
+          <a class="joblist-title" href="/admin/jobs/<%= j.id %>"><%= j.title %></a>
+          <div class="muted"><%= j.client ? j.client + ', ' : '' %><%= j.town %><%= j.year ? ', ' + j.year : '' %> · <%= j.category %> · <%= j.photoCount %> photo<%= j.photoCount === 1 ? '' : 's' %></div>
+          <div class="joblist-tags">
+            <% if (!j.published) { %><span class="pill pill-grey">Hidden</span><% } %>
+            <% if (j.featured) { %><span class="pill pill-sky">On home page</span><% } %>
+            <% if (j.in_progress) { %><span class="pill pill-sky">In progress</span><% } %>
+          </div>
+        </div>
+        <div class="joblist-actions">
+          <a class="btn btn-outline btn-sm" href="/admin/jobs/<%= j.id %>">Edit</a>
+          <a class="btn btn-ghost btn-sm" href="/work/<%= j.slug %>">View</a>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</main>
+<script>window.CSRF = "<%= csrf %>";</script>
+<script src="/js/admin.js?v=<%= v %>" defer></script>
+</body></html>

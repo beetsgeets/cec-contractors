@@ -1,0 +1,15 @@
+<%- include('../partials/head') %>
+<div class="auth">
+  <a href="/" class="auth-brand"><img src="/img/logo.svg" alt="<%= settings.business_name %>" width="256" height="35"></a>
+  <form method="post" action="/admin/setup" class="form auth-form">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <h1 class="h2">Create the first owner login</h1>
+    <p class="muted">This only happens once. You can add a second login (for Mike) from Settings afterward.</p>
+    <% if (error) { %><p class="field-error" role="alert"><%= error %></p><% } %>
+    <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required autofocus></div>
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
+    <div class="field"><label for="password">Password (10+ characters)</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required></div>
+    <button class="btn btn-navy btn-lg" type="submit">Create login</button>
+  </form>
+</div>
+</body></html>

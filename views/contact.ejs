@@ -1,0 +1,82 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="section page-head">
+  <div class="wrap">
+    <h1 class="h1"><%- t('contact.title') %></h1>
+    <div class="prose lede narrow-text"><%- t('contact.intro') %></div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap contact-grid">
+    <div class="contact-side">
+      <div class="contact-card">
+        <p class="contact-who"><%= settings.phone_primary_name %>, estimates and new projects</p>
+        <a class="contact-phone" href="<%= tel(settings.phone_primary) %>"><%= settings.phone_primary %></a>
+        <p><a href="mailto:<%= settings.email_primary %>"><%= settings.email_primary %></a></p>
+      </div>
+      <div class="contact-card contact-card-quiet">
+        <p class="contact-who"><%- t('contact.current_clients') %></p>
+        <p><%= settings.phone_secondary_name %>, <a href="<%= tel(settings.phone_secondary) %>"><%= settings.phone_secondary %></a></p>
+        <p><a href="mailto:<%= settings.email_secondary %>"><%= settings.email_secondary %></a></p>
+      </div>
+      <p class="muted">We work in <%= settings.service_area %>. Fully insured.</p>
+    </div>
+
+    <div class="contact-form">
+      <% if (sent) { %>
+        <div class="notice notice-ok" role="status">
+          <h2 class="h3"><%- t('contact.form.thanks_title') %></h2>
+          <div class="prose"><%- t('contact.form.thanks_body') %></div>
+          <p><a href="/work">Look at more of our work</a></p>
+        </div>
+      <% } else { %>
+      <form method="post" action="/contact" class="form" novalidate>
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div class="field <%= errors && errors.name ? 'has-error' : '' %>">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required value="<%= form.name || '' %>">
+          <% if (errors && errors.name) { %><p class="field-error"><%= errors.name %></p><% } %>
+        </div>
+        <div class="field-row">
+          <div class="field <%= errors && errors.phone ? 'has-error' : '' %>">
+            <label for="f-phone">Phone</label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" value="<%= form.phone || '' %>">
+            <% if (errors && errors.phone) { %><p class="field-error"><%= errors.phone %></p><% } %>
+          </div>
+          <div class="field <%= errors && errors.email ? 'has-error' : '' %>">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" value="<%= form.email || '' %>">
+            <% if (errors && errors.email) { %><p class="field-error"><%= errors.email %></p><% } %>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-town">Town</label>
+            <input id="f-town" name="town" type="text" autocomplete="address-level2" value="<%= form.town || '' %>">
+          </div>
+          <div class="field">
+            <label for="f-type">Kind of project</label>
+            <select id="f-type" name="project_type">
+              <% ['', 'Finish carpentry or millwork', 'Stairs or railings', 'Kitchen or interior remodel', 'Addition or conversion', 'Porch, deck, or patio', 'Historic restoration', 'Commercial or church', 'Repair', 'Something else'].forEach(o => { %>
+                <option value="<%= o %>" <%= (form.project_type || '') === o ? 'selected' : '' %>><%= o || 'Choose one' %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+        <div class="field <%= errors && errors.message ? 'has-error' : '' %>">
+          <label for="f-msg">What are you thinking about?</label>
+          <textarea id="f-msg" name="message" rows="6" required><%= form.message || '' %></textarea>
+          <p class="field-hint">Rough size, timing, and anything you already know you want. If you have photos, mention it and we will give you a number to text them to.</p>
+          <% if (errors && errors.message) { %><p class="field-error"><%= errors.message %></p><% } %>
+        </div>
+        <button class="btn btn-navy btn-lg" type="submit">Send request</button>
+      </form>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,13 @@
+<%# expects: job (with .cover), optional big %>
+<a class="card <%= (typeof big !== 'undefined' && big) ? 'card-big' : '' %>" href="/work/<%= job.slug %>">
+  <span class="card-img">
+    <% if (job.cover) { %>
+      <img src="<%= img(job.slug, job.cover.base, (typeof big !== 'undefined' && big) ? 'medium' : 'thumb') %>" alt="<%= job.title %>, <%= job.town %>" loading="lazy" width="640" height="480">
+    <% } else { %><span class="card-noimg"></span><% } %>
+    <% if (job.in_progress) { %><span class="tag tag-progress">In progress</span><% } %>
+  </span>
+  <span class="card-text">
+    <span class="card-title"><%= job.title %></span>
+    <span class="card-meta"><span><%= job.client ? job.client + ', ' : '' %><%= job.town %></span><% if (job.year) { %><span class="card-year"><%= job.year %></span><% } %></span>
+  </span>
+</a>

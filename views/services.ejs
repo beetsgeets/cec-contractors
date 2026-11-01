@@ -1,0 +1,40 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<section class="section page-head">
+  <div class="wrap">
+    <h1 class="h1"><%- t('services.title') %></h1>
+    <div class="prose lede narrow-text"><%- t('services.intro') %></div>
+    <nav class="filters" aria-label="Jump to a service">
+      <% [1,2,3,4,5,6].forEach(n => { %><a href="#service-<%= n %>"><%- t(`services.${n}.title`) %></a><% }) %>
+    </nav>
+  </div>
+</section>
+
+<% groups.forEach((g, i) => { %>
+<section class="section svc <%= i % 2 ? 'section-cream' : '' %>" id="service-<%= g.n %>">
+  <div class="wrap svc-grid">
+    <div class="svc-text">
+      <h2 class="h2"><%- t(`services.${g.n}.title`) %></h2>
+      <div class="prose"><%- t(`services.${g.n}.body`) %></div>
+      <p><a class="btn btn-outline" href="/contact">Ask about a project like this</a></p>
+    </div>
+    <div class="svc-examples">
+      <% g.jobs.forEach(job => { %><%- include('partials/jobcard', { job }) %><% }) %>
+    </div>
+  </div>
+</section>
+<% }) %>
+
+<section class="section section-navy cred">
+  <div class="wrap narrow">
+    <h2 class="h2"><%- t('home.how.title') %></h2>
+    <dl class="how-list how-list-light">
+      <% [1,2,3,4].forEach(n => { %>
+        <div class="how-item"><dt><%- t(`how.${n}.title`) %></dt><dd><%- t(`how.${n}.body`, { multi: false }) %></dd></div>
+      <% }) %>
+    </dl>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

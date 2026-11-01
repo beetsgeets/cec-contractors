@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= title ? `${title} — ${settings.business_name}` : `${settings.business_name} — Carpentry, Remodeling & Millwork in Greater Cleveland` %></title>
+<% if (typeof description !== 'undefined' && description) { %><meta name="description" content="<%= description %>"><% } %>
+<% if (typeof admin !== 'undefined' && admin) { %><meta name="robots" content="noindex,nofollow"><% } else { %><link rel="canonical" href="<%= canonical %>"><% } %>
+<meta property="og:site_name" content="<%= settings.business_name %>">
+<meta property="og:title" content="<%= title ? title : settings.business_name %>">
+<% if (typeof description !== 'undefined' && description) { %><meta property="og:description" content="<%= description %>"><% } %>
+<meta property="og:image" content="<%= (typeof ogImage !== 'undefined' && ogImage) ? ogImage : siteUrl + '/img/tile.png' %>">
+<meta name="theme-color" content="#00263A">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="/css/site.css?v=<%= v %>">
+<% if (typeof admin !== 'undefined' && admin) { %><link rel="stylesheet" href="/css/admin.css?v=<%= v %>"><% } %>
+<% if (!(typeof admin !== 'undefined' && admin)) { %>
+<script type="application/ld+json">
+<%- JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": settings.business_name,
+  "alternateName": settings.former_name,
+  "url": siteUrl,
+  "telephone": settings.phone_primary,
+  "email": settings.email_primary,
+  "image": siteUrl + "/img/tile.png",
+  "areaServed": settings.service_area,
+  "address": { "@type": "PostalAddress", "addressRegion": "OH", "addressCountry": "US" },
+  "sameAs": settings.facebook_url ? [settings.facebook_url] : []
+}) %>
+</script>
+<% } %>
+</head>
+<body class="<%= editMode ? 'is-editing' : '' %> <%= (typeof admin !== 'undefined' && admin) ? 'admin-body' : '' %>">
