@@ -135,7 +135,7 @@ r.post('/contact', async (req, res) => {
   const id = q.leads.insert(form);
   const to = (res.locals.settings.lead_emails || cfg.MAIL_TO || '').split(',');
   try {
-    const r2 = await sendLeadEmail({ ...form, id }, to);
+    const r2 = await sendLeadEmail({ ...form, id }, to, `${req.protocol}://${req.get('host')}`);
     if (r2.ok) q.leads.markEmailed(id);
     else console.warn('Lead email not sent:', r2.reason);
   } catch (e) {

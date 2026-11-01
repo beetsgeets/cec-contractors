@@ -61,8 +61,8 @@
       <ul class="invitelist">
         <% invites.forEach(i => { %>
           <li>
-            <input type="text" readonly value="<%= siteUrl %>/admin/join/<%= i.token %>" onclick="this.select()" aria-label="Invite link">
-            <button type="button" class="btn btn-navy btn-sm copy-btn" data-copy="<%= siteUrl %>/admin/join/<%= i.token %>">Copy</button>
+            <input type="text" readonly value="<%= origin %>/admin/join/<%= i.token %>" onclick="this.select()" aria-label="Invite link">
+            <button type="button" class="btn btn-navy btn-sm copy-btn" data-copy="<%= origin %>/admin/join/<%= i.token %>">Copy</button>
             <form method="post" action="/admin/invites/<%= i.token %>/revoke" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="linkbtn danger" type="submit">Cancel</button></form>
           </li>
         <% }) %>

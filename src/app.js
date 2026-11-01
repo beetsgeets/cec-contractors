@@ -52,6 +52,9 @@ app.use((req, res, next) => {
   res.locals.tel = telHref;
   res.locals.img = images.url;
   res.locals.siteUrl = cfg.SITE_URL;
+  // The address the visitor is actually using — right for links people will click
+  // (invites, help) before the real domain is pointed at the site.
+  res.locals.origin = `${req.protocol}://${req.get('host')}`;
   res.locals.path = req.path;
   res.locals.canonical = cfg.SITE_URL + req.path.replace(/\/$/, '') || cfg.SITE_URL + '/';
   res.locals.v = cfg.ASSET_V || '1';

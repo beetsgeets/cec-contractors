@@ -5,7 +5,8 @@ function esc(s) {
   return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-async function sendLeadEmail(lead, toList) {
+async function sendLeadEmail(lead, toList, origin) {
+  const site = origin || SITE_URL;
   if (!RESEND_API_KEY) return { ok: false, reason: 'RESEND_API_KEY not set' };
   const to = toList.map(s => s.trim()).filter(Boolean);
   if (!to.length) return { ok: false, reason: 'no recipients configured' };
@@ -20,9 +21,9 @@ async function sendLeadEmail(lead, toList) {
       <table style="border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#35546A">${esc(k)}</td><td style="padding:4px 0"><b>${esc(v)}</b></td></tr>`).join('')}</table>
       <p style="white-space:pre-wrap;border-left:3px solid #8EC9E8;padding-left:12px;margin:16px 0">${esc(lead.message)}</p>
       <p style="color:#35546A;font-size:13px">Reply to this email to answer ${esc(lead.name || 'them')} directly.${lead.phone ? ` Or call ${esc(lead.phone)}.` : ''}<br>
-      Every request is also saved under <a href="${SITE_URL}/admin/leads">Estimate requests</a> on the website.</p>
+      Every request is also saved under <a href="${site}/admin/leads">Estimate requests</a> on the website.</p>
     </div>`;
-  const text = `New estimate request\n\n${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\n${lead.message}\n\nSaved at ${SITE_URL}/admin/leads`;
+  const text = `New estimate request\n\n${rows.map(([k, v]) => `${k}: ${v}`).join('\n')}\n\n${lead.message}\n\nSaved at ${site}/admin/leads`;
 
   const body = {
     from: MAIL_FROM,
