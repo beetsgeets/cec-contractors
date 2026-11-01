@@ -26,7 +26,7 @@ const DEFAULTS = {
     'home.hero.title': 'Built with experience. Finished with pride.',
     'home.hero.sub': 'Residential and commercial carpentry, remodeling, and millwork across Greater Cleveland. One crew, start to finish.',
     'home.intro.title': 'Carpentry is the trade. Running the whole job is the service.',
-    'home.intro.body': 'We are a small, experienced crew that does its own carpentry and manages everything around it. Ceilings, stairs, built-ins, porches, additions, restaurant build-outs. When a job needs other trades, we bring in the electricians, plumbers, and painters we trust and keep them on schedule, so you deal with one person and one plan.\n\nMost of our work comes from people who have hired us before, and from other contractors who need the carpentry done right.',
+    'home.intro.body': 'We are a small, experienced crew that does its own carpentry and manages everything around it. Ceilings, stairs, built-ins, porches, additions, restaurant build-outs. When a job needs other trades, we bring in the electricians, plumbers, and painters we trust and keep them on schedule, so you deal with one person and one plan.',
     'home.work.title': 'Recent work',
     'home.work.sub': 'Every photo on this site is our own job. No stock images.',
     'home.series.title': 'One home, year after year',
