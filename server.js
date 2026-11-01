@@ -1,10 +1,12 @@
 const cfg = require('./src/config');
-const { seed } = require('./seed/seed');
+const { seed, reorderSeededPhotos } = require('./seed/seed');
 
 // First start on an empty database: load the initial jobs and photos.
 try {
   const r = seed();
   if (r.seeded) console.log(`Seeded ${r.jobs} jobs, ${r.photos} photos.`);
+  const m = reorderSeededPhotos();
+  if (m.applied) console.log(`Photo order updated on ${m.jobs} jobs.`);
 } catch (e) {
   console.error('Seeding failed:', e);
 }

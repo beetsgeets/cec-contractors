@@ -1,70 +1,6 @@
 {
  "cleveland-heights-living-room-restoration": [
   {
-   "n": 1,
-   "file": "20260524_121931.jpg",
-   "caption": "The finished room, three years on.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 2,
-   "file": "20260524_121908.jpg",
-   "caption": "Cherry crown and paneling, matched to the original.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 3,
-   "file": "20260524_121945.jpg",
-   "caption": "",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 4,
-   "file": "20260524_121904.jpg",
-   "caption": "",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
    "n": 5,
    "file": "20221123_130742.jpg",
    "caption": "Before: the ceiling opened to the joists.",
@@ -207,13 +143,11 @@
    "large_h": 879,
    "medium_w": 1100,
    "medium_h": 826
-  }
- ],
- "cleveland-heights-third-floor-renovation": [
+  },
   {
    "n": 1,
-   "file": "20240508_172358.jpg",
-   "caption": "After: hardwood, recessed lights, new trim.",
+   "file": "20260524_121931.jpg",
+   "caption": "The finished room, three years on.",
    "w": 1171,
    "h": 879,
    "files": {
@@ -225,6 +159,136 @@
    "large_h": 879,
    "medium_w": 1100,
    "medium_h": 826
+  },
+  {
+   "n": 2,
+   "file": "20260524_121908.jpg",
+   "caption": "Cherry crown and paneling, matched to the original.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 3,
+   "file": "20260524_121945.jpg",
+   "caption": "",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 4,
+   "file": "20260524_121904.jpg",
+   "caption": "",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  }
+ ],
+ "cleveland-heights-third-floor-renovation": [
+  {
+   "n": 7,
+   "file": "20240116_111414.jpg",
+   "caption": "Before.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 8,
+   "file": "20240116_111422.jpg",
+   "caption": "",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "08-large.jpg",
+    "medium": "08-medium.jpg",
+    "thumb": "08-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 11,
+   "file": "20240214_103739.jpg",
+   "caption": "Doorway rework.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "11-large.jpg",
+    "medium": "11-medium.jpg",
+    "thumb": "11-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 9,
+   "file": "20240221_154153.jpg",
+   "caption": "Radiator cover frames in the shop.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "09-large.jpg",
+    "medium": "09-medium.jpg",
+    "thumb": "09-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 10,
+   "file": "20240221_161615.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "10-large.jpg",
+    "medium": "10-medium.jpg",
+    "thumb": "10-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
   },
   {
    "n": 2,
@@ -275,6 +339,22 @@
    "medium_h": 879
   },
   {
+   "n": 1,
+   "file": "20240508_172358.jpg",
+   "caption": "After: hardwood, recessed lights, new trim.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
    "n": 5,
    "file": "20240508_172410.jpg",
    "caption": "",
@@ -305,89 +385,153 @@
    "large_h": 879,
    "medium_w": 1100,
    "medium_h": 826
-  },
-  {
-   "n": 7,
-   "file": "20240116_111414.jpg",
-   "caption": "Before.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 8,
-   "file": "20240116_111422.jpg",
-   "caption": "",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "08-large.jpg",
-    "medium": "08-medium.jpg",
-    "thumb": "08-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 9,
-   "file": "20240221_154153.jpg",
-   "caption": "Radiator cover frames in the shop.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "09-large.jpg",
-    "medium": "09-medium.jpg",
-    "thumb": "09-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 10,
-   "file": "20240221_161615.jpg",
-   "caption": "",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "10-large.jpg",
-    "medium": "10-medium.jpg",
-    "thumb": "10-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
+  }
+ ],
+ "cleveland-heights-staircase-rebuild": [
   {
    "n": 11,
-   "file": "20240214_103739.jpg",
-   "caption": "Doorway rework.",
-   "w": 659,
+   "file": "20241221_111049.jpg",
+   "caption": "Before: the old railing.",
+   "w": 1171,
    "h": 879,
    "files": {
     "large": "11-large.jpg",
     "medium": "11-medium.jpg",
     "thumb": "11-thumb.jpg"
    },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 12,
+   "file": "matt-picks/04_early-demo.jpg",
+   "caption": "Opened up at the base.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "12-large.jpg",
+    "medium": "12-medium.jpg",
+    "thumb": "12-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 13,
+   "file": "20250409_093611.jpg",
+   "caption": "Shop-made parts.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "13-large.jpg",
+    "medium": "13-medium.jpg",
+    "thumb": "13-thumb.jpg"
+   },
    "large_w": 659,
    "large_h": 879,
    "medium_w": 659,
    "medium_h": 879
-  }
- ],
- "cleveland-heights-staircase-rebuild": [
+  },
+  {
+   "n": 6,
+   "file": "matt-picks/01_profile-template.jpg",
+   "caption": "A template cut from the original rail, so the new profile matches.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "06-large.jpg",
+    "medium": "06-medium.jpg",
+    "thumb": "06-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 7,
+   "file": "matt-picks/02_curved-rail-joint.jpg",
+   "caption": "Curved rail section, joined and shaped by hand.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 8,
+   "file": "matt-picks/03_rail-drilling-jig.jpg",
+   "caption": "Rail in the drilling jig.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "08-large.jpg",
+    "medium": "08-medium.jpg",
+    "thumb": "08-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 10,
+   "file": "matt-picks/05_skirt-and-newels-raw.jpg",
+   "caption": "New nosings and newels before finish.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "10-large.jpg",
+    "medium": "10-medium.jpg",
+    "thumb": "10-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 14,
+   "file": "20250512_141031.jpg",
+   "caption": "New rail going in.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "14-large.jpg",
+    "medium": "14-medium.jpg",
+    "thumb": "14-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 9,
+   "file": "matt-picks/06_balcony-railing-raw.jpg",
+   "caption": "Balcony railing, raw, with the iron balusters in.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "09-large.jpg",
+    "medium": "09-medium.jpg",
+    "thumb": "09-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
   {
    "n": 1,
    "file": "20260524_121524.jpg",
@@ -467,91 +611,29 @@
    "large_h": 879,
    "medium_w": 659,
    "medium_h": 879
-  },
+  }
+ ],
+ "lakewood-porch-to-office-conversion": [
   {
-   "n": 6,
-   "file": "matt-picks/01_profile-template.jpg",
-   "caption": "A template cut from the original rail, so the new profile matches.",
-   "w": 1659,
-   "h": 2212,
+   "n": 12,
+   "file": "20250724_113712.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
    "files": {
-    "large": "06-large.jpg",
-    "medium": "06-medium.jpg",
-    "thumb": "06-thumb.jpg"
+    "large": "12-large.jpg",
+    "medium": "12-medium.jpg",
+    "thumb": "12-thumb.jpg"
    },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 7,
-   "file": "matt-picks/02_curved-rail-joint.jpg",
-   "caption": "Curved rail section, joined and shaped by hand.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 8,
-   "file": "matt-picks/03_rail-drilling-jig.jpg",
-   "caption": "Rail in the drilling jig.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "08-large.jpg",
-    "medium": "08-medium.jpg",
-    "thumb": "08-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 9,
-   "file": "matt-picks/06_balcony-railing-raw.jpg",
-   "caption": "Balcony railing, raw, with the iron balusters in.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "09-large.jpg",
-    "medium": "09-medium.jpg",
-    "thumb": "09-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 10,
-   "file": "matt-picks/05_skirt-and-newels-raw.jpg",
-   "caption": "New nosings and newels before finish.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "10-large.jpg",
-    "medium": "10-medium.jpg",
-    "thumb": "10-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
   },
   {
    "n": 11,
-   "file": "20241221_111049.jpg",
-   "caption": "Before: the old railing.",
+   "file": "20250724_144454.jpg",
+   "caption": "Before: the open porch, gutted to the structure.",
    "w": 1171,
    "h": 879,
    "files": {
@@ -565,161 +647,15 @@
    "medium_h": 826
   },
   {
-   "n": 12,
-   "file": "matt-picks/04_early-demo.jpg",
-   "caption": "Opened up at the base.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "12-large.jpg",
-    "medium": "12-medium.jpg",
-    "thumb": "12-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 13,
-   "file": "20250409_093611.jpg",
-   "caption": "Shop-made parts.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "13-large.jpg",
-    "medium": "13-medium.jpg",
-    "thumb": "13-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 14,
-   "file": "20250512_141031.jpg",
-   "caption": "New rail going in.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "14-large.jpg",
-    "medium": "14-medium.jpg",
-    "thumb": "14-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  }
- ],
- "lakewood-porch-to-office-conversion": [
-  {
-   "n": 1,
-   "file": "20251027_125354.jpg",
-   "caption": "The finished office: built-ins, floating shelves, and a feature wall.",
+   "n": 10,
+   "file": "20250908_164024.jpg",
+   "caption": "Framed and sheathed.",
    "w": 1171,
    "h": 879,
    "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 2,
-   "file": "20250927_113950.jpg",
-   "caption": "French doors and the herringbone floor.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 3,
-   "file": "20250927_113931.jpg",
-   "caption": "New Marvin windows and trim.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 4,
-   "file": "20251204_121909.jpg",
-   "caption": "The finished exterior.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 5,
-   "file": "20251204_121849.jpg",
-   "caption": "",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "05-large.jpg",
-    "medium": "05-medium.jpg",
-    "thumb": "05-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 6,
-   "file": "20251204_121827.jpg",
-   "caption": "New exterior door.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "06-large.jpg",
-    "medium": "06-medium.jpg",
-    "thumb": "06-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 7,
-   "file": "20250912_115833.jpg",
-   "caption": "Windows in, before trim.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
+    "large": "10-large.jpg",
+    "medium": "10-medium.jpg",
+    "thumb": "10-thumb.jpg"
    },
    "large_w": 1171,
    "large_h": 879,
@@ -759,9 +695,123 @@
    "medium_h": 826
   },
   {
+   "n": 7,
+   "file": "20250912_115833.jpg",
+   "caption": "Windows in, before trim.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 3,
+   "file": "20250927_113931.jpg",
+   "caption": "New Marvin windows and trim.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 2,
+   "file": "20250927_113950.jpg",
+   "caption": "French doors and the herringbone floor.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 1,
+   "file": "20251027_125354.jpg",
+   "caption": "The finished office: built-ins, floating shelves, and a feature wall.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 6,
+   "file": "20251204_121827.jpg",
+   "caption": "New exterior door.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "06-large.jpg",
+    "medium": "06-medium.jpg",
+    "thumb": "06-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 5,
+   "file": "20251204_121849.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "05-large.jpg",
+    "medium": "05-medium.jpg",
+    "thumb": "05-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 4,
+   "file": "20251204_121909.jpg",
+   "caption": "The finished exterior.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  }
+ ],
+ "ohio-city-covered-patio": [
+  {
    "n": 10,
-   "file": "20250908_164024.jpg",
-   "caption": "Framed and sheathed.",
+   "file": "20241008_112216.jpg",
+   "caption": "Before.",
    "w": 1171,
    "h": 879,
    "files": {
@@ -775,15 +825,31 @@
    "medium_h": 826
   },
   {
-   "n": 11,
-   "file": "20250724_144454.jpg",
-   "caption": "Before: the open porch, gutted to the structure.",
+   "n": 9,
+   "file": "20241009_114440.jpg",
+   "caption": "Piers going in through the existing deck.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "09-large.jpg",
+    "medium": "09-medium.jpg",
+    "thumb": "09-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 8,
+   "file": "20241016_124142.jpg",
+   "caption": "",
    "w": 1171,
    "h": 879,
    "files": {
-    "large": "11-large.jpg",
-    "medium": "11-medium.jpg",
-    "thumb": "11-thumb.jpg"
+    "large": "08-large.jpg",
+    "medium": "08-medium.jpg",
+    "thumb": "08-thumb.jpg"
    },
    "large_w": 1171,
    "large_h": 879,
@@ -791,70 +857,20 @@
    "medium_h": 826
   },
   {
-   "n": 12,
-   "file": "20250724_113712.jpg",
-   "caption": "",
+   "n": 7,
+   "file": "20241017_154324.jpg",
+   "caption": "Roof framed and sheathed.",
    "w": 659,
    "h": 879,
    "files": {
-    "large": "12-large.jpg",
-    "medium": "12-medium.jpg",
-    "thumb": "12-thumb.jpg"
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
    },
    "large_w": 659,
    "large_h": 879,
    "medium_w": 659,
    "medium_h": 879
-  }
- ],
- "ohio-city-covered-patio": [
-  {
-   "n": 1,
-   "file": "matt-picks/01_finished-screens-hero.jpg",
-   "caption": "The finished patio.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 2,
-   "file": "matt-picks/02_finished-screens-side.jpg",
-   "caption": "Privacy screens wrapped around the column.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 3,
-   "file": "matt-picks/03_screen-and-ac-cover.jpg",
-   "caption": "The matching AC-unit cover.",
-   "w": 1659,
-   "h": 2212,
-   "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
   },
   {
    "n": 4,
@@ -905,109 +921,11 @@
    "medium_h": 1100
   },
   {
-   "n": 7,
-   "file": "20241017_154324.jpg",
-   "caption": "Roof framed and sheathed.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 8,
-   "file": "20241016_124142.jpg",
-   "caption": "",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "08-large.jpg",
-    "medium": "08-medium.jpg",
-    "thumb": "08-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 9,
-   "file": "20241009_114440.jpg",
-   "caption": "Piers going in through the existing deck.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "09-large.jpg",
-    "medium": "09-medium.jpg",
-    "thumb": "09-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 10,
-   "file": "20241008_112216.jpg",
-   "caption": "Before.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "10-large.jpg",
-    "medium": "10-medium.jpg",
-    "thumb": "10-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  }
- ],
- "chesterland-kitchen-remodel": [
-  {
-   "n": 1,
-   "file": "00-cover.jpg",
-   "caption": "The finished kitchen.",
-   "w": 1536,
-   "h": 2048,
-   "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
-   "n": 2,
-   "file": "08.jpg",
-   "caption": "Custom ceiling box over the island.",
-   "w": 1536,
-   "h": 2048,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 1350,
-   "large_h": 1800,
-   "medium_w": 825,
-   "medium_h": 1100
-  },
-  {
    "n": 3,
-   "file": "04.jpg",
-   "caption": "",
-   "w": 1536,
-   "h": 2048,
+   "file": "matt-picks/03_screen-and-ac-cover.jpg",
+   "caption": "The matching AC-unit cover.",
+   "w": 1659,
+   "h": 2212,
    "files": {
     "large": "03-large.jpg",
     "medium": "03-medium.jpg",
@@ -1019,15 +937,65 @@
    "medium_h": 1100
   },
   {
-   "n": 4,
-   "file": "07.jpg",
-   "caption": "Paneled appliance wall.",
+   "n": 2,
+   "file": "matt-picks/02_finished-screens-side.jpg",
+   "caption": "Privacy screens wrapped around the column.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 1,
+   "file": "matt-picks/01_finished-screens-hero.jpg",
+   "caption": "The finished patio.",
+   "w": 1659,
+   "h": 2212,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  }
+ ],
+ "chesterland-kitchen-remodel": [
+  {
+   "n": 7,
+   "file": "03.jpg",
+   "caption": "Down to the studs.",
+   "w": 2048,
+   "h": 1536,
+   "files": {
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 1800,
+   "large_h": 1350,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 3,
+   "file": "04.jpg",
+   "caption": "",
    "w": 1536,
    "h": 2048,
    "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
    },
    "large_w": 1350,
    "large_h": 1800,
@@ -1067,20 +1035,52 @@
    "medium_h": 1100
   },
   {
-   "n": 7,
-   "file": "03.jpg",
-   "caption": "Down to the studs.",
-   "w": 2048,
-   "h": 1536,
+   "n": 4,
+   "file": "07.jpg",
+   "caption": "Paneled appliance wall.",
+   "w": 1536,
+   "h": 2048,
    "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
    },
-   "large_w": 1800,
-   "large_h": 1350,
-   "medium_w": 1100,
-   "medium_h": 825
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 2,
+   "file": "08.jpg",
+   "caption": "Custom ceiling box over the island.",
+   "w": 1536,
+   "h": 2048,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
+  },
+  {
+   "n": 1,
+   "file": "00-cover.jpg",
+   "caption": "The finished kitchen.",
+   "w": 1536,
+   "h": 2048,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1350,
+   "large_h": 1800,
+   "medium_w": 825,
+   "medium_h": 1100
   }
  ],
  "westlake-kitchen-and-laundry-remodel": [
@@ -1313,79 +1313,15 @@
  ],
  "lakewood-secret-bookcase-door": [
   {
-   "n": 1,
-   "file": "01.jpg",
-   "caption": "Closed, it's a bookcase.",
-   "w": 2048,
-   "h": 1068,
-   "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1800,
-   "large_h": 939,
-   "medium_w": 1100,
-   "medium_h": 574
-  },
-  {
-   "n": 2,
-   "file": "04.jpg",
-   "caption": "Open, it's a door.",
-   "w": 1039,
-   "h": 2048,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 913,
-   "large_h": 1800,
-   "medium_w": 558,
-   "medium_h": 1100
-  },
-  {
-   "n": 3,
-   "file": "02.jpg",
+   "n": 7,
+   "file": "07.jpg",
    "caption": "",
    "w": 1152,
    "h": 2048,
    "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 1012,
-   "large_h": 1800,
-   "medium_w": 619,
-   "medium_h": 1100
-  },
-  {
-   "n": 4,
-   "file": "03.jpg",
-   "caption": "",
-   "w": 976,
-   "h": 2048,
-   "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
-   },
-   "large_w": 858,
-   "large_h": 1800,
-   "medium_w": 524,
-   "medium_h": 1100
-  },
-  {
-   "n": 5,
-   "file": "10.jpg",
-   "caption": "The concealed edge.",
-   "w": 1152,
-   "h": 2048,
-   "files": {
-    "large": "05-large.jpg",
-    "medium": "05-medium.jpg",
-    "thumb": "05-thumb.jpg"
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
    },
    "large_w": 1012,
    "large_h": 1800,
@@ -1409,22 +1345,6 @@
    "medium_h": 1100
   },
   {
-   "n": 7,
-   "file": "07.jpg",
-   "caption": "",
-   "w": 1152,
-   "h": 2048,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
-   },
-   "large_w": 1012,
-   "large_h": 1800,
-   "medium_w": 619,
-   "medium_h": 1100
-  },
-  {
    "n": 8,
    "file": "05.jpg",
    "caption": "",
@@ -1439,6 +1359,86 @@
    "large_h": 1800,
    "medium_w": 619,
    "medium_h": 1100
+  },
+  {
+   "n": 5,
+   "file": "10.jpg",
+   "caption": "The concealed edge.",
+   "w": 1152,
+   "h": 2048,
+   "files": {
+    "large": "05-large.jpg",
+    "medium": "05-medium.jpg",
+    "thumb": "05-thumb.jpg"
+   },
+   "large_w": 1012,
+   "large_h": 1800,
+   "medium_w": 619,
+   "medium_h": 1100
+  },
+  {
+   "n": 4,
+   "file": "03.jpg",
+   "caption": "",
+   "w": 976,
+   "h": 2048,
+   "files": {
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
+   },
+   "large_w": 858,
+   "large_h": 1800,
+   "medium_w": 524,
+   "medium_h": 1100
+  },
+  {
+   "n": 3,
+   "file": "02.jpg",
+   "caption": "",
+   "w": 1152,
+   "h": 2048,
+   "files": {
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
+   },
+   "large_w": 1012,
+   "large_h": 1800,
+   "medium_w": 619,
+   "medium_h": 1100
+  },
+  {
+   "n": 2,
+   "file": "04.jpg",
+   "caption": "Open, it's a door.",
+   "w": 1039,
+   "h": 2048,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 913,
+   "large_h": 1800,
+   "medium_w": 558,
+   "medium_h": 1100
+  },
+  {
+   "n": 1,
+   "file": "01.jpg",
+   "caption": "Closed, it's a bookcase.",
+   "w": 2048,
+   "h": 1068,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1800,
+   "large_h": 939,
+   "medium_w": 1100,
+   "medium_h": 574
   }
  ],
  "ohio-city-third-floor-interior-finish": [
@@ -1755,111 +1755,15 @@
  ],
  "west-shore-unitarian-universalist-church-sanctuary": [
   {
-   "n": 1,
-   "file": "15.jpg",
-   "caption": "The finished sanctuary.",
+   "n": 9,
+   "file": "05.jpg",
+   "caption": "Entries protected while the building stayed open.",
    "w": 1124,
    "h": 843,
    "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 2,
-   "file": "14.jpg",
-   "caption": "Backlit wall panels.",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 3,
-   "file": "13.jpg",
-   "caption": "",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 4,
-   "file": "12.jpg",
-   "caption": "Panels going up.",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 5,
-   "file": "11.jpg",
-   "caption": "",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "05-large.jpg",
-    "medium": "05-medium.jpg",
-    "thumb": "05-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 6,
-   "file": "07.jpg",
-   "caption": "The curved stage platform.",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "06-large.jpg",
-    "medium": "06-medium.jpg",
-    "thumb": "06-thumb.jpg"
-   },
-   "large_w": 1124,
-   "large_h": 843,
-   "medium_w": 1100,
-   "medium_h": 825
-  },
-  {
-   "n": 7,
-   "file": "06.jpg",
-   "caption": "",
-   "w": 1124,
-   "h": 843,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
+    "large": "09-large.jpg",
+    "medium": "09-medium.jpg",
+    "thumb": "09-thumb.jpg"
    },
    "large_w": 1124,
    "large_h": 843,
@@ -1883,15 +1787,111 @@
    "medium_h": 843
   },
   {
-   "n": 9,
-   "file": "05.jpg",
-   "caption": "Entries protected while the building stayed open.",
+   "n": 7,
+   "file": "06.jpg",
+   "caption": "",
    "w": 1124,
    "h": 843,
    "files": {
-    "large": "09-large.jpg",
-    "medium": "09-medium.jpg",
-    "thumb": "09-thumb.jpg"
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 6,
+   "file": "07.jpg",
+   "caption": "The curved stage platform.",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "06-large.jpg",
+    "medium": "06-medium.jpg",
+    "thumb": "06-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 5,
+   "file": "11.jpg",
+   "caption": "",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "05-large.jpg",
+    "medium": "05-medium.jpg",
+    "thumb": "05-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 4,
+   "file": "12.jpg",
+   "caption": "Panels going up.",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 3,
+   "file": "13.jpg",
+   "caption": "",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 2,
+   "file": "14.jpg",
+   "caption": "Backlit wall panels.",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 1124,
+   "large_h": 843,
+   "medium_w": 1100,
+   "medium_h": 825
+  },
+  {
+   "n": 1,
+   "file": "15.jpg",
+   "caption": "The finished sanctuary.",
+   "w": 1124,
+   "h": 843,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
    },
    "large_w": 1124,
    "large_h": 843,
@@ -1901,15 +1901,15 @@
  ],
  "lakewood-presbyterian-church-interior-repair": [
   {
-   "n": 1,
-   "file": "20260812_111758.jpg",
-   "caption": "Rebuilt and closed in.",
+   "n": 6,
+   "file": "20260727_100830.jpg",
+   "caption": "What the church first saw.",
    "w": 1171,
    "h": 879,
    "files": {
-    "large": "01-large.jpg",
-    "medium": "01-medium.jpg",
-    "thumb": "01-thumb.jpg"
+    "large": "06-large.jpg",
+    "medium": "06-medium.jpg",
+    "thumb": "06-thumb.jpg"
    },
    "large_w": 1171,
    "large_h": 879,
@@ -1917,20 +1917,36 @@
    "medium_h": 826
   },
   {
-   "n": 2,
-   "file": "20260812_111807.jpg",
-   "caption": "",
-   "w": 1171,
+   "n": 7,
+   "file": "20260609_154058.jpg",
+   "caption": "What was behind it: rotted framing at the brick.",
+   "w": 659,
    "h": 879,
    "files": {
-    "large": "02-large.jpg",
-    "medium": "02-medium.jpg",
-    "thumb": "02-thumb.jpg"
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
    },
-   "large_w": 1171,
+   "large_w": 659,
    "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 8,
+   "file": "20260706_161616.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "08-large.jpg",
+    "medium": "08-medium.jpg",
+    "thumb": "08-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
   },
   {
    "n": 3,
@@ -1981,54 +1997,6 @@
    "medium_h": 879
   },
   {
-   "n": 6,
-   "file": "20260727_100830.jpg",
-   "caption": "What the church first saw.",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "06-large.jpg",
-    "medium": "06-medium.jpg",
-    "thumb": "06-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
-  {
-   "n": 7,
-   "file": "20260609_154058.jpg",
-   "caption": "What was behind it: rotted framing at the brick.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 8,
-   "file": "20260706_161616.jpg",
-   "caption": "",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "08-large.jpg",
-    "medium": "08-medium.jpg",
-    "thumb": "08-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
    "n": 9,
    "file": "20260728_150606.jpg",
    "caption": "Opened to the rafters.",
@@ -2059,13 +2027,11 @@
    "large_h": 879,
    "medium_w": 659,
    "medium_h": 879
-  }
- ],
- "lakewood-presbyterian-church-rear-patio": [
+  },
   {
    "n": 1,
-   "file": "20261006_131932.jpg",
-   "caption": "The finished entrance.",
+   "file": "20260812_111758.jpg",
+   "caption": "Rebuilt and closed in.",
    "w": 1171,
    "h": 879,
    "files": {
@@ -2080,8 +2046,8 @@
   },
   {
    "n": 2,
-   "file": "20261004_134842.jpg",
-   "caption": "New stone caps on the planter walls.",
+   "file": "20260812_111807.jpg",
+   "caption": "",
    "w": 1171,
    "h": 879,
    "files": {
@@ -2093,55 +2059,9 @@
    "large_h": 879,
    "medium_w": 1100,
    "medium_h": 826
-  },
-  {
-   "n": 3,
-   "file": "20261004_134834.jpg",
-   "caption": "",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "03-large.jpg",
-    "medium": "03-medium.jpg",
-    "thumb": "03-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 4,
-   "file": "20261004_134854.jpg",
-   "caption": "",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "04-large.jpg",
-    "medium": "04-medium.jpg",
-    "thumb": "04-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 5,
-   "file": "20260913_154238.jpg",
-   "caption": "",
-   "w": 1171,
-   "h": 879,
-   "files": {
-    "large": "05-large.jpg",
-    "medium": "05-medium.jpg",
-    "thumb": "05-thumb.jpg"
-   },
-   "large_w": 1171,
-   "large_h": 879,
-   "medium_w": 1100,
-   "medium_h": 826
-  },
+  }
+ ],
+ "lakewood-presbyterian-church-rear-patio": [
   {
    "n": 6,
    "file": "20260807_103010.jpg",
@@ -2173,9 +2093,121 @@
    "large_h": 879,
    "medium_w": 659,
    "medium_h": 879
+  },
+  {
+   "n": 5,
+   "file": "20260913_154238.jpg",
+   "caption": "",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "05-large.jpg",
+    "medium": "05-medium.jpg",
+    "thumb": "05-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 3,
+   "file": "20261004_134834.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "03-large.jpg",
+    "medium": "03-medium.jpg",
+    "thumb": "03-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 2,
+   "file": "20261004_134842.jpg",
+   "caption": "New stone caps on the planter walls.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "02-large.jpg",
+    "medium": "02-medium.jpg",
+    "thumb": "02-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
+  },
+  {
+   "n": 4,
+   "file": "20261004_134854.jpg",
+   "caption": "",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "04-large.jpg",
+    "medium": "04-medium.jpg",
+    "thumb": "04-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 1,
+   "file": "20261006_131932.jpg",
+   "caption": "The finished entrance.",
+   "w": 1171,
+   "h": 879,
+   "files": {
+    "large": "01-large.jpg",
+    "medium": "01-medium.jpg",
+    "thumb": "01-thumb.jpg"
+   },
+   "large_w": 1171,
+   "large_h": 879,
+   "medium_w": 1100,
+   "medium_h": 826
   }
  ],
  "stone-mad-catering-kitchen": [
+  {
+   "n": 7,
+   "file": "20260610_133632.jpg",
+   "caption": "Before.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "07-large.jpg",
+    "medium": "07-medium.jpg",
+    "thumb": "07-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
+  {
+   "n": 6,
+   "file": "20260818_122227.jpg",
+   "caption": "Rear entry door.",
+   "w": 659,
+   "h": 879,
+   "files": {
+    "large": "06-large.jpg",
+    "medium": "06-medium.jpg",
+    "thumb": "06-thumb.jpg"
+   },
+   "large_w": 659,
+   "large_h": 879,
+   "medium_w": 659,
+   "medium_h": 879
+  },
   {
    "n": 1,
    "file": "20260928_142115.jpg",
@@ -2250,38 +2282,6 @@
     "large": "05-large.jpg",
     "medium": "05-medium.jpg",
     "thumb": "05-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 6,
-   "file": "20260818_122227.jpg",
-   "caption": "Rear entry door.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "06-large.jpg",
-    "medium": "06-medium.jpg",
-    "thumb": "06-thumb.jpg"
-   },
-   "large_w": 659,
-   "large_h": 879,
-   "medium_w": 659,
-   "medium_h": 879
-  },
-  {
-   "n": 7,
-   "file": "20260610_133632.jpg",
-   "caption": "Before.",
-   "w": 659,
-   "h": 879,
-   "files": {
-    "large": "07-large.jpg",
-    "medium": "07-medium.jpg",
-    "thumb": "07-thumb.jpg"
    },
    "large_w": 659,
    "large_h": 879,

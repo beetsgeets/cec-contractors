@@ -19,22 +19,6 @@
       ],
       "photos": [
         {
-          "file": "20260524_121931.jpg",
-          "caption": "The finished room, three years on."
-        },
-        {
-          "file": "20260524_121908.jpg",
-          "caption": "Cherry crown and paneling, matched to the original."
-        },
-        {
-          "file": "20260524_121945.jpg",
-          "caption": ""
-        },
-        {
-          "file": "20260524_121904.jpg",
-          "caption": ""
-        },
-        {
           "file": "20221123_130742.jpg",
           "caption": "Before: the ceiling opened to the joists."
         },
@@ -69,8 +53,25 @@
         {
           "file": "20230313_104419.jpg",
           "caption": ""
+        },
+        {
+          "file": "20260524_121931.jpg",
+          "caption": "The finished room, three years on."
+        },
+        {
+          "file": "20260524_121908.jpg",
+          "caption": "Cherry crown and paneling, matched to the original."
+        },
+        {
+          "file": "20260524_121945.jpg",
+          "caption": ""
+        },
+        {
+          "file": "20260524_121904.jpg",
+          "caption": ""
         }
-      ]
+      ],
+      "cover": "20260524_121931.jpg"
     },
     {
       "slug": "cleveland-heights-third-floor-renovation",
@@ -90,8 +91,24 @@
       ],
       "photos": [
         {
-          "file": "20240508_172358.jpg",
-          "caption": "After: hardwood, recessed lights, new trim."
+          "file": "20240116_111414.jpg",
+          "caption": "Before."
+        },
+        {
+          "file": "20240116_111422.jpg",
+          "caption": ""
+        },
+        {
+          "file": "20240214_103739.jpg",
+          "caption": "Doorway rework."
+        },
+        {
+          "file": "20240221_154153.jpg",
+          "caption": "Radiator cover frames in the shop."
+        },
+        {
+          "file": "20240221_161615.jpg",
+          "caption": ""
         },
         {
           "file": "20240328_135019.jpg",
@@ -106,34 +123,19 @@
           "caption": ""
         },
         {
+          "file": "20240508_172358.jpg",
+          "caption": "After: hardwood, recessed lights, new trim."
+        },
+        {
           "file": "20240508_172410.jpg",
           "caption": ""
         },
         {
           "file": "20240508_172402.jpg",
           "caption": ""
-        },
-        {
-          "file": "20240116_111414.jpg",
-          "caption": "Before."
-        },
-        {
-          "file": "20240116_111422.jpg",
-          "caption": ""
-        },
-        {
-          "file": "20240221_154153.jpg",
-          "caption": "Radiator cover frames in the shop."
-        },
-        {
-          "file": "20240221_161615.jpg",
-          "caption": ""
-        },
-        {
-          "file": "20240214_103739.jpg",
-          "caption": "Doorway rework."
         }
-      ]
+      ],
+      "cover": "20240508_172358.jpg"
     },
     {
       "slug": "cleveland-heights-staircase-rebuild",
@@ -154,6 +156,42 @@
       ],
       "photos": [
         {
+          "file": "20241221_111049.jpg",
+          "caption": "Before: the old railing."
+        },
+        {
+          "file": "matt-picks/04_early-demo.jpg",
+          "caption": "Opened up at the base."
+        },
+        {
+          "file": "20250409_093611.jpg",
+          "caption": "Shop-made parts."
+        },
+        {
+          "file": "matt-picks/01_profile-template.jpg",
+          "caption": "A template cut from the original rail, so the new profile matches."
+        },
+        {
+          "file": "matt-picks/02_curved-rail-joint.jpg",
+          "caption": "Curved rail section, joined and shaped by hand."
+        },
+        {
+          "file": "matt-picks/03_rail-drilling-jig.jpg",
+          "caption": "Rail in the drilling jig."
+        },
+        {
+          "file": "matt-picks/05_skirt-and-newels-raw.jpg",
+          "caption": "New nosings and newels before finish."
+        },
+        {
+          "file": "20250512_141031.jpg",
+          "caption": "New rail going in."
+        },
+        {
+          "file": "matt-picks/06_balcony-railing-raw.jpg",
+          "caption": "Balcony railing, raw, with the iron balusters in."
+        },
+        {
           "file": "20260524_121524.jpg",
           "caption": "The finished stair."
         },
@@ -172,44 +210,9 @@
         {
           "file": "20260524_121001.jpg",
           "caption": ""
-        },
-        {
-          "file": "matt-picks/01_profile-template.jpg",
-          "caption": "A template cut from the original rail, so the new profile matches."
-        },
-        {
-          "file": "matt-picks/02_curved-rail-joint.jpg",
-          "caption": "Curved rail section, joined and shaped by hand."
-        },
-        {
-          "file": "matt-picks/03_rail-drilling-jig.jpg",
-          "caption": "Rail in the drilling jig."
-        },
-        {
-          "file": "matt-picks/06_balcony-railing-raw.jpg",
-          "caption": "Balcony railing, raw, with the iron balusters in."
-        },
-        {
-          "file": "matt-picks/05_skirt-and-newels-raw.jpg",
-          "caption": "New nosings and newels before finish."
-        },
-        {
-          "file": "20241221_111049.jpg",
-          "caption": "Before: the old railing."
-        },
-        {
-          "file": "matt-picks/04_early-demo.jpg",
-          "caption": "Opened up at the base."
-        },
-        {
-          "file": "20250409_093611.jpg",
-          "caption": "Shop-made parts."
-        },
-        {
-          "file": "20250512_141031.jpg",
-          "caption": "New rail going in."
         }
-      ]
+      ],
+      "cover": "20260524_121524.jpg"
     },
     {
       "slug": "lakewood-porch-to-office-conversion",
@@ -231,32 +234,16 @@
       ],
       "photos": [
         {
-          "file": "20251027_125354.jpg",
-          "caption": "The finished office: built-ins, floating shelves, and a feature wall."
-        },
-        {
-          "file": "20250927_113950.jpg",
-          "caption": "French doors and the herringbone floor."
-        },
-        {
-          "file": "20250927_113931.jpg",
-          "caption": "New Marvin windows and trim."
-        },
-        {
-          "file": "20251204_121909.jpg",
-          "caption": "The finished exterior."
-        },
-        {
-          "file": "20251204_121849.jpg",
+          "file": "20250724_113712.jpg",
           "caption": ""
         },
         {
-          "file": "20251204_121827.jpg",
-          "caption": "New exterior door."
+          "file": "20250724_144454.jpg",
+          "caption": "Before: the open porch, gutted to the structure."
         },
         {
-          "file": "20250912_115833.jpg",
-          "caption": "Windows in, before trim."
+          "file": "20250908_164024.jpg",
+          "caption": "Framed and sheathed."
         },
         {
           "file": "20250909_131024.jpg",
@@ -267,18 +254,35 @@
           "caption": "Siding and trim."
         },
         {
-          "file": "20250908_164024.jpg",
-          "caption": "Framed and sheathed."
+          "file": "20250912_115833.jpg",
+          "caption": "Windows in, before trim."
         },
         {
-          "file": "20250724_144454.jpg",
-          "caption": "Before: the open porch, gutted to the structure."
+          "file": "20250927_113931.jpg",
+          "caption": "New Marvin windows and trim."
         },
         {
-          "file": "20250724_113712.jpg",
+          "file": "20250927_113950.jpg",
+          "caption": "French doors and the herringbone floor."
+        },
+        {
+          "file": "20251027_125354.jpg",
+          "caption": "The finished office: built-ins, floating shelves, and a feature wall."
+        },
+        {
+          "file": "20251204_121827.jpg",
+          "caption": "New exterior door."
+        },
+        {
+          "file": "20251204_121849.jpg",
           "caption": ""
+        },
+        {
+          "file": "20251204_121909.jpg",
+          "caption": "The finished exterior."
         }
-      ]
+      ],
+      "cover": "20251027_125354.jpg"
     },
     {
       "slug": "ohio-city-covered-patio",
@@ -299,16 +303,20 @@
       ],
       "photos": [
         {
-          "file": "matt-picks/01_finished-screens-hero.jpg",
-          "caption": "The finished patio."
+          "file": "20241008_112216.jpg",
+          "caption": "Before."
         },
         {
-          "file": "matt-picks/02_finished-screens-side.jpg",
-          "caption": "Privacy screens wrapped around the column."
+          "file": "20241009_114440.jpg",
+          "caption": "Piers going in through the existing deck."
         },
         {
-          "file": "matt-picks/03_screen-and-ac-cover.jpg",
-          "caption": "The matching AC-unit cover."
+          "file": "20241016_124142.jpg",
+          "caption": ""
+        },
+        {
+          "file": "20241017_154324.jpg",
+          "caption": "Roof framed and sheathed."
         },
         {
           "file": "20241111_145114.jpg",
@@ -323,22 +331,19 @@
           "caption": "Screen frames being built on site."
         },
         {
-          "file": "20241017_154324.jpg",
-          "caption": "Roof framed and sheathed."
+          "file": "matt-picks/03_screen-and-ac-cover.jpg",
+          "caption": "The matching AC-unit cover."
         },
         {
-          "file": "20241016_124142.jpg",
-          "caption": ""
+          "file": "matt-picks/02_finished-screens-side.jpg",
+          "caption": "Privacy screens wrapped around the column."
         },
         {
-          "file": "20241009_114440.jpg",
-          "caption": "Piers going in through the existing deck."
-        },
-        {
-          "file": "20241008_112216.jpg",
-          "caption": "Before."
+          "file": "matt-picks/01_finished-screens-hero.jpg",
+          "caption": "The finished patio."
         }
-      ]
+      ],
+      "cover": "matt-picks/01_finished-screens-hero.jpg"
     },
     {
       "slug": "chesterland-kitchen-remodel",
@@ -358,20 +363,12 @@
       ],
       "photos": [
         {
-          "file": "00-cover.jpg",
-          "caption": "The finished kitchen."
-        },
-        {
-          "file": "08.jpg",
-          "caption": "Custom ceiling box over the island."
+          "file": "03.jpg",
+          "caption": "Down to the studs."
         },
         {
           "file": "04.jpg",
           "caption": ""
-        },
-        {
-          "file": "07.jpg",
-          "caption": "Paneled appliance wall."
         },
         {
           "file": "05.jpg",
@@ -382,10 +379,19 @@
           "caption": ""
         },
         {
-          "file": "03.jpg",
-          "caption": "Down to the studs."
+          "file": "07.jpg",
+          "caption": "Paneled appliance wall."
+        },
+        {
+          "file": "08.jpg",
+          "caption": "Custom ceiling box over the island."
+        },
+        {
+          "file": "00-cover.jpg",
+          "caption": "The finished kitchen."
         }
-      ]
+      ],
+      "cover": "00-cover.jpg"
     },
     {
       "slug": "westlake-kitchen-and-laundry-remodel",
@@ -430,7 +436,8 @@
           "file": "07.jpg",
           "caption": ""
         }
-      ]
+      ],
+      "cover": "03.jpg"
     },
     {
       "slug": "ohio-city-kitchen-and-living-room-remodel",
@@ -475,7 +482,8 @@
           "file": "04.jpg",
           "caption": "Living room."
         }
-      ]
+      ],
+      "cover": "01.jpg"
     },
     {
       "slug": "lakewood-secret-bookcase-door",
@@ -493,19 +501,15 @@
       ],
       "photos": [
         {
-          "file": "01.jpg",
-          "caption": "Closed, it's a bookcase."
-        },
-        {
-          "file": "04.jpg",
-          "caption": "Open, it's a door."
-        },
-        {
-          "file": "02.jpg",
+          "file": "07.jpg",
           "caption": ""
         },
         {
-          "file": "03.jpg",
+          "file": "08.jpg",
+          "caption": "Hidden latch."
+        },
+        {
+          "file": "05.jpg",
           "caption": ""
         },
         {
@@ -513,18 +517,23 @@
           "caption": "The concealed edge."
         },
         {
-          "file": "08.jpg",
-          "caption": "Hidden latch."
-        },
-        {
-          "file": "07.jpg",
+          "file": "03.jpg",
           "caption": ""
         },
         {
-          "file": "05.jpg",
+          "file": "02.jpg",
           "caption": ""
+        },
+        {
+          "file": "04.jpg",
+          "caption": "Open, it's a door."
+        },
+        {
+          "file": "01.jpg",
+          "caption": "Closed, it's a bookcase."
         }
-      ]
+      ],
+      "cover": "01.jpg"
     },
     {
       "slug": "ohio-city-third-floor-interior-finish",
@@ -562,7 +571,8 @@
           "file": "01.jpg",
           "caption": ""
         }
-      ]
+      ],
+      "cover": "03.jpg"
     },
     {
       "slug": "ohio-city-front-porch-and-rear-deck",
@@ -603,7 +613,8 @@
           "file": "03.jpg",
           "caption": ""
         }
-      ]
+      ],
+      "cover": "08.jpg"
     },
     {
       "slug": "gordon-park-front-porch-restoration",
@@ -636,7 +647,8 @@
           "file": "03.jpg",
           "caption": ""
         }
-      ]
+      ],
+      "cover": "04.jpg"
     },
     {
       "slug": "timber-frame-stairs-and-railing",
@@ -669,7 +681,8 @@
           "file": "01.jpg",
           "caption": "The loft railing from below."
         }
-      ]
+      ],
+      "cover": "04.jpg"
     },
     {
       "slug": "west-shore-unitarian-universalist-church-sanctuary",
@@ -689,23 +702,15 @@
       ],
       "photos": [
         {
-          "file": "15.jpg",
-          "caption": "The finished sanctuary."
+          "file": "05.jpg",
+          "caption": "Entries protected while the building stayed open."
         },
         {
-          "file": "14.jpg",
-          "caption": "Backlit wall panels."
+          "file": "02.jpg",
+          "caption": "Stage framing."
         },
         {
-          "file": "13.jpg",
-          "caption": ""
-        },
-        {
-          "file": "12.jpg",
-          "caption": "Panels going up."
-        },
-        {
-          "file": "11.jpg",
+          "file": "06.jpg",
           "caption": ""
         },
         {
@@ -713,18 +718,27 @@
           "caption": "The curved stage platform."
         },
         {
-          "file": "06.jpg",
+          "file": "11.jpg",
           "caption": ""
         },
         {
-          "file": "02.jpg",
-          "caption": "Stage framing."
+          "file": "12.jpg",
+          "caption": "Panels going up."
         },
         {
-          "file": "05.jpg",
-          "caption": "Entries protected while the building stayed open."
+          "file": "13.jpg",
+          "caption": ""
+        },
+        {
+          "file": "14.jpg",
+          "caption": "Backlit wall panels."
+        },
+        {
+          "file": "15.jpg",
+          "caption": "The finished sanctuary."
         }
-      ]
+      ],
+      "cover": "15.jpg"
     },
     {
       "slug": "lakewood-presbyterian-church-interior-repair",
@@ -745,11 +759,15 @@
       ],
       "photos": [
         {
-          "file": "20260812_111758.jpg",
-          "caption": "Rebuilt and closed in."
+          "file": "20260727_100830.jpg",
+          "caption": "What the church first saw."
         },
         {
-          "file": "20260812_111807.jpg",
+          "file": "20260609_154058.jpg",
+          "caption": "What was behind it: rotted framing at the brick."
+        },
+        {
+          "file": "20260706_161616.jpg",
           "caption": ""
         },
         {
@@ -765,23 +783,19 @@
           "caption": "Inside the enclosure: metal-stud framed, skinned in Masonite."
         },
         {
-          "file": "20260727_100830.jpg",
-          "caption": "What the church first saw."
-        },
-        {
-          "file": "20260609_154058.jpg",
-          "caption": "What was behind it: rotted framing at the brick."
-        },
-        {
-          "file": "20260706_161616.jpg",
-          "caption": ""
-        },
-        {
           "file": "20260728_150606.jpg",
           "caption": "Opened to the rafters."
         },
         {
           "file": "20260728_150608.jpg",
+          "caption": ""
+        },
+        {
+          "file": "20260812_111758.jpg",
+          "caption": "Rebuilt and closed in."
+        },
+        {
+          "file": "20260812_111807.jpg",
           "caption": ""
         }
       ],
@@ -804,19 +818,11 @@
       ],
       "photos": [
         {
-          "file": "20261006_131932.jpg",
-          "caption": "The finished entrance."
+          "file": "20260807_103010.jpg",
+          "caption": "Before: broken caps and heaved stone."
         },
         {
-          "file": "20261004_134842.jpg",
-          "caption": "New stone caps on the planter walls."
-        },
-        {
-          "file": "20261004_134834.jpg",
-          "caption": ""
-        },
-        {
-          "file": "20261004_134854.jpg",
+          "file": "20260807_103045.jpg",
           "caption": ""
         },
         {
@@ -824,14 +830,23 @@
           "caption": ""
         },
         {
-          "file": "20260807_103010.jpg",
-          "caption": "Before: broken caps and heaved stone."
+          "file": "20261004_134834.jpg",
+          "caption": ""
         },
         {
-          "file": "20260807_103045.jpg",
+          "file": "20261004_134842.jpg",
+          "caption": "New stone caps on the planter walls."
+        },
+        {
+          "file": "20261004_134854.jpg",
           "caption": ""
+        },
+        {
+          "file": "20261006_131932.jpg",
+          "caption": "The finished entrance."
         }
-      ]
+      ],
+      "cover": "20261006_131932.jpg"
     },
     {
       "slug": "stone-mad-catering-kitchen",
@@ -852,6 +867,14 @@
       ],
       "photos": [
         {
+          "file": "20260610_133632.jpg",
+          "caption": "Before."
+        },
+        {
+          "file": "20260818_122227.jpg",
+          "caption": "Rear entry door."
+        },
+        {
           "file": "20260928_142115.jpg",
           "caption": "Kitchen layout framed in metal stud."
         },
@@ -870,16 +893,9 @@
         {
           "file": "20261016_122616.jpg",
           "caption": "New steel front entry."
-        },
-        {
-          "file": "20260818_122227.jpg",
-          "caption": "Rear entry door."
-        },
-        {
-          "file": "20260610_133632.jpg",
-          "caption": "Before."
         }
-      ]
+      ],
+      "cover": "20260928_142115.jpg"
     },
     {
       "slug": "taco-tantos-dining-room-and-bar-expansion",
@@ -922,7 +938,8 @@
           "file": "08.jpg",
           "caption": ""
         }
-      ]
+      ],
+      "cover": "06.jpg"
     },
     {
       "slug": "souper-market-counters-and-pos-station",
@@ -961,7 +978,8 @@
           "file": "04.jpg",
           "caption": "Side station."
         }
-      ]
+      ],
+      "cover": "05.jpg"
     }
   ],
   "_rules": "No homeowner names or street addresses anywhere. Businesses may be named. Photos listed in display order; first is the cover unless 'cover' set. Source folders for regenerating images live in seed/sources.json (not committed)."

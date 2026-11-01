@@ -41,11 +41,46 @@ function seed({ force = false } = {}) {
       });
     });
     q.meta.set('seeded', '1');
+    q.meta.set('photo_order_v2', '1');
   });
   return { seeded: true, jobs: jobs.length, photos: count };
 }
 
-module.exports = { seed };
+// One-time fix for sites seeded before the photo order was made chronological:
+// re-apply the order and cover from the seed files to the jobs that came with
+// the site. Photos added since keep their files; only positions change.
+function reorderSeededPhotos() {
+  if (q.meta.get('photo_order_v2') === '1') return { applied: false };
+  const jobsFile = path.join(__dirname, 'jobs.json');
+  const photosFile = path.join(__dirname, 'photos.json');
+  if (!fs.existsSync(jobsFile) || !fs.existsSync(photosFile)) return { applied: false };
+  const jobs = JSON.parse(fs.readFileSync(jobsFile, 'utf8')).jobs;
+  const photos = JSON.parse(fs.readFileSync(photosFile, 'utf8'));
+  let touched = 0;
+  q.tx(() => {
+    for (const j of jobs) {
+      const job = q.jobs.bySlug(j.slug);
+      if (!job) continue;
+      const order = (photos[j.slug] || []).map(p => ({ base: String(p.n).padStart(2, '0'), file: p.file }));
+      const dbPhotos = q.photos.forJob(job.id);
+      const byBase = Object.fromEntries(dbPhotos.map(p => [p.base, p]));
+      let pos = 0;
+      for (const o of order) {
+        const p = byBase[o.base];
+        if (!p) continue;
+        q.photos.setPosition(p.id, ++pos);
+        if (j.cover && o.file === j.cover) q.jobs.setCover(job.id, p.id);
+      }
+      // anything uploaded since goes after the seeded set, keeping its relative order
+      for (const p of dbPhotos.filter(p => !order.some(o => o.base === p.base))) q.photos.setPosition(p.id, ++pos);
+      touched++;
+    }
+    q.meta.set('photo_order_v2', '1');
+  });
+  return { applied: true, jobs: touched };
+}
+
+module.exports = { seed, reorderSeededPhotos };
 
 if (require.main === module) {
   const r = seed({ force: process.argv.includes('--force') });

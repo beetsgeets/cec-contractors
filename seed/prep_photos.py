@@ -25,13 +25,23 @@ def save(im, path, q):
 def main():
     jobs = json.load(open(os.path.join(HERE, "jobs.json")))["jobs"]
     sources = json.load(open(os.path.join(HERE, "sources.json")))  # slug -> folder of original photos (local only)
+    # keep each photo's number stable across runs, so files already on a live site stay valid
+    prev_path = os.path.join(HERE, "photos.json")
+    prev = json.load(open(prev_path)) if os.path.exists(prev_path) else {}
     out = {}
     total = 0
     for j in jobs:
+        known = {p["file"]: p["n"] for p in prev.get(j["slug"], []) if "file" in p}
+        next_n = max(known.values(), default=0)
         d = os.path.join(UPLOADS, j["slug"])
         os.makedirs(d, exist_ok=True)
         out[j["slug"]] = []
-        for i, p in enumerate(j["photos"], 1):
+        for p in j["photos"]:
+            if p["file"] in known:
+                i = known[p["file"]]
+            else:
+                next_n += 1
+                i = next_n
             src = os.path.join(sources[j["slug"]], p["file"])
             im = Image.open(src)
             im = ImageOps.exif_transpose(im).convert("RGB")
