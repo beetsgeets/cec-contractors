@@ -4,7 +4,7 @@
   <form method="post" action="/admin/setup" class="form auth-form">
     <input type="hidden" name="_csrf" value="<%= csrf %>">
     <h1 class="h2">Create the first owner login</h1>
-    <p class="muted">This only happens once. You can add a second login (for Mike) from Settings afterward.</p>
+    <p class="muted">This only happens once. Afterward, make an invite link in Settings so the next person can create their own login.</p>
     <% if (error) { %><p class="field-error" role="alert"><%= error %></p><% } %>
     <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required autofocus></div>
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required></div>
