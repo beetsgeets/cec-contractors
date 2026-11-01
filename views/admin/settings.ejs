@@ -50,16 +50,25 @@
         </li>
       <% }) %>
     </ul>
-    <form method="post" action="/admin/users">
-      <input type="hidden" name="_csrf" value="<%= csrf %>">
-      <h3 class="h3" style="font-size:1.05rem">Add a login</h3>
-      <div class="field-row">
-        <div class="field"><label for="u-name">Name</label><input id="u-name" name="name" required></div>
-        <div class="field"><label for="u-email">Email</label><input id="u-email" name="email" type="email" required></div>
-      </div>
-      <div class="field"><label for="u-pass">Password (10+ characters)</label><input id="u-pass" name="password" type="password" minlength="10" autocomplete="new-password" required></div>
-      <button class="btn btn-outline" type="submit">Add login</button>
-    </form>
+    <div id="invites">
+      <h3 class="h3" style="font-size:1.05rem">Invite someone to sign in</h3>
+      <p class="muted">Make a link, text or email it to them, and they create their own name and password. Each link works once and expires in 7 days.</p>
+      <form method="post" action="/admin/invites" class="inline">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <button class="btn btn-outline" type="submit">Make an invite link</button>
+      </form>
+      <% if (invites.length) { %>
+      <ul class="invitelist">
+        <% invites.forEach(i => { %>
+          <li>
+            <input type="text" readonly value="<%= siteUrl %>/admin/join/<%= i.token %>" onclick="this.select()" aria-label="Invite link">
+            <button type="button" class="btn btn-navy btn-sm copy-btn" data-copy="<%= siteUrl %>/admin/join/<%= i.token %>">Copy</button>
+            <form method="post" action="/admin/invites/<%= i.token %>/revoke" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><button class="linkbtn danger" type="submit">Cancel</button></form>
+          </li>
+        <% }) %>
+      </ul>
+      <% } %>
+    </div>
   </section>
 
   <form method="post" action="/admin/password" class="form adm-form">
@@ -72,4 +81,11 @@
     <button class="btn btn-outline" type="submit">Change password</button>
   </form>
 </main>
+<script>
+document.querySelectorAll('.copy-btn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    navigator.clipboard.writeText(b.dataset.copy).then(function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1800); });
+  });
+});
+</script>
 </body></html>

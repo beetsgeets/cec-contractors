@@ -77,6 +77,14 @@ CREATE TABLE IF NOT EXISTS settings (
   key TEXT PRIMARY KEY,
   value TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS invites (
+  token TEXT PRIMARY KEY,
+  created_by INTEGER NOT NULL,
+  created TEXT NOT NULL DEFAULT (datetime('now')),
+  used_at TEXT,
+  used_by INTEGER
+);
 `);
 
 // ---- helpers ---------------------------------------------------------------
@@ -137,6 +145,13 @@ const q = {
         LEFT JOIN photos p ON p.id = COALESCE(j.cover_photo_id, (SELECT id FROM photos WHERE job_id=j.id ORDER BY position ASC, id ASC LIMIT 1))`).all();
       return Object.fromEntries(rows.map(r => [r.job_id, r.id ? r : null]));
     },
+  },
+  invites: {
+    create: (token, by) => db.prepare('INSERT INTO invites(token,created_by) VALUES(?,?)').run(token, by),
+    get: (token) => db.prepare("SELECT * FROM invites WHERE token=? AND used_at IS NULL AND created > datetime('now','-7 days')").get(token),
+    use: (token, userId) => db.prepare("UPDATE invites SET used_at=datetime('now'), used_by=? WHERE token=?").run(userId, token),
+    open: () => db.prepare("SELECT token, created FROM invites WHERE used_at IS NULL AND created > datetime('now','-7 days') ORDER BY created DESC").all(),
+    revoke: (token) => db.prepare('DELETE FROM invites WHERE token=?').run(token),
   },
   leads: {
     insert: (l) => db.prepare('INSERT INTO leads(name,phone,email,town,project_type,message) VALUES(@name,@phone,@email,@town,@project_type,@message)').run(l).lastInsertRowid,

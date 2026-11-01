@@ -2,6 +2,7 @@
 <%- include('_nav') %>
 <main class="wrap adm-main adm-narrow">
   <h1 class="h2">How to run the website</h1>
+  <% if (typeof flash !== 'undefined' && flash) { %><p class="notice notice-ok" role="status"><%= flash %></p><% } %>
   <div class="form adm-form prose">
     <h2 class="h3">Post a new job from your phone</h2>
     <ol>
@@ -27,7 +28,7 @@
     </ul>
 
     <h2 class="h3">Phone numbers, emails, and who can sign in</h2>
-    <p>All of that is under <a href="/admin/settings">Settings</a>.</p>
+    <p>All of that is under <a href="/admin/settings">Settings</a>. To let someone else sign in, make an invite link there and send it to them; they pick their own password.</p>
   </div>
 </main>
 </body></html>

@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>
+<div class="auth">
+  <a href="/" class="auth-brand"><img src="/img/logo.svg" alt="<%= settings.business_name %>" width="256" height="35"></a>
+  <% if (!invite) { %>
+  <div class="form auth-form">
+    <h1 class="h2">This invite link has expired</h1>
+    <p>Invite links work once and expire after 7 days. Ask for a new one, or <a href="/admin/login">sign in</a> if you already have a login.</p>
+  </div>
+  <% } else { %>
+  <form method="post" action="/admin/join/<%= invite.token %>" class="form auth-form">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <h1 class="h2">Create your login</h1>
+    <p class="muted">You’ve been invited to help run the <%= settings.business_name %> website. Pick your own password; nobody else sees it.</p>
+    <% if (error) { %><p class="field-error" role="alert"><%= error %></p><% } %>
+    <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" required autofocus value="<%= form.name || '' %>"></div>
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required value="<%= form.email || '' %>"></div>
+    <div class="field"><label for="password">Password (10+ characters)</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required></div>
+    <button class="btn btn-navy btn-lg" type="submit">Create login</button>
+  </form>
+  <% } %>
+</div>
+</body></html>

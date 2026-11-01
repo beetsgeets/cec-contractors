@@ -96,3 +96,8 @@
 .userlist { list-style: none; padding: 0; margin: 0 0 20px; }
 .userlist li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--stone-2); }
 .edit-toast.is-bad { background: #9B2C2C; }
+
+/* invite links */
+.invitelist { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+.invitelist li { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.invitelist input { flex: 1 1 240px; font: inherit; font-size: .9rem; padding: 8px 10px; border: 1px solid var(--stone); border-radius: 3px; background: var(--paper); color: var(--slate); }

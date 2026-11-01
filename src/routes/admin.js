@@ -55,6 +55,30 @@ r.post('/login', (req, res) => {
 });
 r.post('/logout', (req, res) => { req.session = null; res.redirect('/'); });
 
+// ---- invite links: an owner makes a link, the new person creates their own login --------
+r.get('/join/:token', (req, res) => {
+  const inv = q.invites.get(req.params.token);
+  if (!inv) return res.status(410).render('admin/join', { title: 'Create your login', invite: null, error: null, form: {} });
+  res.render('admin/join', { title: 'Create your login', invite: inv, error: null, form: {} });
+});
+r.post('/join/:token', (req, res) => {
+  const inv = q.invites.get(req.params.token);
+  if (!inv) return res.status(410).render('admin/join', { title: 'Create your login', invite: null, error: null, form: {} });
+  const { name, email, password } = req.body;
+  const form = { name: String(name || '').trim(), email: String(email || '').trim() };
+  if (!form.name || !form.email || !password || password.length < 10) {
+    return res.status(422).render('admin/join', { title: 'Create your login', invite: inv, error: 'Name, email, and a password of at least 10 characters.', form });
+  }
+  if (q.users.byEmail(form.email)) {
+    return res.status(422).render('admin/join', { title: 'Create your login', invite: inv, error: 'That email already has a login. Sign in instead, or use a different email.', form });
+  }
+  const id = q.users.create(form.name, form.email, auth.hashPassword(password));
+  q.invites.use(inv.token, id);
+  req.session.uid = id;
+  req.session.flash = `Welcome, ${form.name}. You're signed in.`;
+  res.redirect('/admin/help');
+});
+
 // everything below needs a login
 r.use(auth.requireUser);
 
@@ -75,7 +99,7 @@ r.post('/content/reset', (req, res) => {
   res.json({ ok: true, value: DEFAULTS.text[k] });
 });
 
-r.get('/help', (req, res) => res.render('admin/help', { title: 'How to run the website' }));
+r.get('/help', (req, res) => { const flash = req.session.flash; delete req.session.flash; res.render('admin/help', { title: 'How to run the website', flash }); });
 
 // ---- dashboard ----------------------------------------------------------------------
 r.get('/', (req, res) => {
@@ -235,20 +259,23 @@ r.post('/leads/:id/archive', (req, res) => { q.leads.setArchived(Number(req.para
 // ---- settings + users ----------------------------------------------------------------------
 r.get('/settings', (req, res) => {
   const flash = req.session.flash; delete req.session.flash;
-  res.render('admin/settings', { title: 'Settings', users: q.users.all(), flash, error: null, keys: Object.keys(DEFAULTS.settings) });
+  res.render('admin/settings', { title: 'Settings', users: q.users.all(), invites: q.invites.open(), flash, error: null, keys: Object.keys(DEFAULTS.settings) });
 });
 r.post('/settings', (req, res) => {
   q.tx(() => { for (const k of Object.keys(DEFAULTS.settings)) if (k in req.body) q.settings.set(k, String(req.body[k]).trim().slice(0, 500)); });
   req.session.flash = 'Settings saved.';
   res.redirect('/admin/settings');
 });
-r.post('/users', (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password || password.length < 10) { req.session.flash = 'Name, email, and a password of at least 10 characters.'; return res.redirect('/admin/settings'); }
-  if (q.users.byEmail(email)) { req.session.flash = 'That email already has a login.'; return res.redirect('/admin/settings'); }
-  q.users.create(name.trim(), email.trim(), auth.hashPassword(password));
-  req.session.flash = `Added ${name.trim()}.`;
-  res.redirect('/admin/settings');
+r.post('/invites', (req, res) => {
+  const token = require('crypto').randomBytes(18).toString('base64url');
+  q.invites.create(token, req.user.id);
+  req.session.flash = 'Invite link made. Send it to the person; it works once and expires in 7 days.';
+  res.redirect('/admin/settings#invites');
+});
+r.post('/invites/:token/revoke', (req, res) => {
+  q.invites.revoke(req.params.token);
+  req.session.flash = 'Invite link cancelled.';
+  res.redirect('/admin/settings#invites');
 });
 r.post('/users/:id/delete', (req, res) => {
   const id = Number(req.params.id);
