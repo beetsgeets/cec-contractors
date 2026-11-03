@@ -20,9 +20,25 @@ function safeScope(s) { try { return JSON.parse(s || '[]'); } catch { return [];
 // just falls through to the next.
 const SEED = {
   livingRoom: 1, thirdFloor: 2, staircase: 3, porchOffice: 4, coveredPatio: 5,
-  chesterlandKitchen: 6, bookcaseDoor: 9, ohioCityThirdFloor: 10, ohioCityPorch: 11,
-  gordonParkPorch: 12, timberStairs: 13, westShoreChurch: 14, lakewoodChurchInterior: 15,
-  stoneMad: 17,
+  chesterlandKitchen: 6, westlakeKitchen: 7, ohioCityKitchen: 8, bookcaseDoor: 9,
+  ohioCityThirdFloor: 10, ohioCityPorch: 11, gordonParkPorch: 12, timberStairs: 13,
+  westShoreChurch: 14, lakewoodChurchInterior: 15, lakewoodChurchPatio: 16, stoneMad: 17,
+  tacoTantos: 18, souperMarket: 19,
+};
+
+// Home page: each job shows up once where possible. The Cleveland Heights house
+// has its own section ("One home, year after year"), so "Recent work" and the
+// service boxes use other jobs. Recent work is the featured jobs not already on
+// the page, topped up from this list; each service box takes the first job in its
+// list that isn't already on the page.
+const HOME_RECENT_FILL = [SEED.tacoTantos, SEED.westlakeKitchen, SEED.gordonParkPorch];
+const HOME_SERVICE_JOBS = {
+  1: [SEED.ohioCityThirdFloor, SEED.bookcaseDoor, SEED.livingRoom],
+  2: [SEED.timberStairs, SEED.staircase],
+  3: [SEED.porchOffice, SEED.westlakeKitchen, SEED.chesterlandKitchen, SEED.ohioCityKitchen],
+  4: [SEED.gordonParkPorch, SEED.ohioCityPorch, SEED.livingRoom],
+  5: [SEED.coveredPatio, SEED.ohioCityPorch, SEED.lakewoodChurchPatio],
+  6: [SEED.westShoreChurch, SEED.tacoTantos, SEED.souperMarket, SEED.stoneMad],
 };
 const SERVICE_JOBS = {
   1: [SEED.livingRoom, SEED.bookcaseDoor, SEED.thirdFloor],
@@ -61,19 +77,29 @@ function heroImage(settings) {
 }
 
 r.get('/', (req, res) => {
-  const featured = withCovers(q.jobs.featured(6));
+  const covers = q.photos.covers();
+  const hero = heroImage(res.locals.settings);
   const series = withCovers(q.jobs.seriesAll('cleveland-heights-house'));
   const how = howWeWorkPhoto();
-  const covers = q.photos.covers();
+  const shown = new Set([hero && hero.job && hero.job.id, ...series.map(j => j.id), how.job && how.job.id].filter(Boolean));
+
+  const recent = q.jobs.featured(100).filter(j => covers[j.id] && !shown.has(j.id)).slice(0, 6);
+  for (const j of publishedJobs(HOME_RECENT_FILL)) {
+    if (recent.length >= 6) break;
+    if (covers[j.id] && !shown.has(j.id) && !recent.some(x => x.id === j.id)) recent.push(j);
+  }
+  recent.forEach(j => shown.add(j.id));
+
   const serviceCards = [1, 2, 3, 4, 5, 6].map(n => {
-    const job = publishedJobs(SERVICE_JOBS[n]).find(j => covers[j.id]) || null;
+    const options = publishedJobs(HOME_SERVICE_JOBS[n]).filter(j => covers[j.id]);
+    const job = options.find(j => !shown.has(j.id)) || options[0] || null;
+    if (job) shown.add(job.id);
     return { n, job, cover: job ? covers[job.id] : null };
   });
   res.render('home', {
     title: null,
     description: 'Residential and commercial carpentry, remodeling, and millwork across Greater Cleveland. One crew, start to finish. Formerly Cutting Edge Carpentry.',
-    hero: heroImage(res.locals.settings),
-    featured, series, howPhoto: how.photo, howPhotoJob: how.job, serviceCards,
+    hero, featured: withCovers(recent), series, howPhoto: how.photo, howPhotoJob: how.job, serviceCards,
   });
 });
 
