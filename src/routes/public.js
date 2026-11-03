@@ -1,6 +1,7 @@
 const express = require('express');
 const { q } = require('../db');
 const cfg = require('../config');
+const indexnow = require('../lib/indexnow');
 const images = require('../lib/images');
 const { sendLeadEmail } = require('../lib/mail');
 const { spamReason } = require('../lib/spam');
@@ -205,5 +206,7 @@ r.get('/sitemap.xml', (req, res) => {
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${cfg.SITE_URL}${u}</loc></url>`).join('\n')}\n</urlset>`);
 });
 r.get('/robots.txt', (req, res) => res.type('text/plain').send(`User-agent: *\nDisallow: /admin\nSitemap: ${cfg.SITE_URL}/sitemap.xml\n`));
+// IndexNow key file: search engines check it matches the key in our pings.
+r.get(`/${indexnow.KEY}.txt`, (req, res) => res.type('text/plain').send(indexnow.KEY));
 
 module.exports = r;

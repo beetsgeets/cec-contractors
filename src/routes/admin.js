@@ -8,6 +8,7 @@ const auth = require('../lib/auth');
 const images = require('../lib/images');
 const { DEFAULTS } = require('../lib/content');
 const { slugify, uniqueSlug, parseScope, fmtDate } = require('../lib/util');
+const indexnow = require('../lib/indexnow');
 
 const r = express.Router();
 r.use((req, res, next) => { res.locals.admin = true; res.locals.fmtDate = fmtDate; next(); });
@@ -91,6 +92,7 @@ r.post('/content', (req, res) => {
   const changes = req.body.changes || {};
   const keys = Object.keys(changes).filter(k => Object.prototype.hasOwnProperty.call(DEFAULTS.text, k));
   q.tx(() => { for (const k of keys) q.content.set(k, String(changes[k]).slice(0, 20000)); });
+  indexnow.queue(keys.flatMap(indexnow.pagesForTextKey));
   res.json({ ok: true, saved: keys.length });
 });
 r.post('/content/reset', (req, res) => {
@@ -152,6 +154,7 @@ async function addPhotos(job, files, startPos) {
 r.post('/jobs/reorder', (req, res) => {
   const ids = (req.body.ids || []).map(Number).filter(Boolean);
   q.tx(() => ids.forEach((id, i) => q.jobs.setPosition(id, i + 1)));
+  indexnow.queue(['/work', '/']);
   res.json({ ok: true });
 });
 
@@ -174,6 +177,7 @@ r.post('/jobs/new', upload.array('photos', 40), async (req, res, next) => {
     const results = await addPhotos(job, req.files || [], 0);
     const first = results.find(x => x.id);
     if (first) q.jobs.setCover(id, first.id);
+    if (job.published) indexnow.queue(indexnow.jobPages(job));
     const failed = results.filter(x => x.error);
     req.session.flash = failed.length ? `Posted. ${failed.length} photo(s) couldn’t be read and were skipped.` : 'Posted. It’s live on the site.';
     res.redirect(`/admin/jobs/${id}`);
@@ -207,6 +211,7 @@ r.post('/jobs/:id', upload.array('photos', 40), async (req, res, next) => {
     const updated = q.jobs.byId(job.id);
     const results = await addPhotos(updated, req.files || [], q.photos.maxPosition(job.id));
     if (!updated.cover_photo_id) { const first = q.photos.forJob(job.id)[0]; if (first) q.jobs.setCover(job.id, first.id); }
+    if (updated.published || job.published) indexnow.queue(indexnow.jobPages(updated));
     const failed = results.filter(x => x.error);
     req.session.flash = failed.length ? `Saved. ${failed.length} photo(s) couldn’t be read and were skipped.` : 'Saved.';
     res.redirect(`/admin/jobs/${job.id}`);
@@ -219,23 +224,32 @@ r.post('/jobs/:id/delete', async (req, res, next) => {
     if (!job) return next();
     q.jobs.remove(job.id);
     await images.deleteJobFolder(job.slug);
+    if (job.published) indexnow.queue(indexnow.jobPages(job));
     res.redirect('/admin');
   } catch (e) { next(e); }
 });
 
 // ---- photos (JSON endpoints used by the job form) -----------------------------------
+// Let search engines know a published job's page changed.
+function announcePhotoJob(photoId) {
+  const p = photoId && q.photos.byId(photoId);
+  const job = p && q.jobs.byId(p.job_id);
+  if (job && job.published) indexnow.queue(indexnow.jobPages(job));
+}
 r.post('/photos/reorder', (req, res) => {
   const ids = (req.body.ids || []).map(Number).filter(Boolean);
   q.tx(() => ids.forEach((id, i) => q.photos.setPosition(id, i + 1)));
+  announcePhotoJob(ids[0]);
   res.json({ ok: true });
 });
 r.post('/photos/:id/caption', (req, res) => {
   q.photos.setCaption(Number(req.params.id), String(req.body.caption || '').slice(0, 300));
+  announcePhotoJob(Number(req.params.id));
   res.json({ ok: true });
 });
 r.post('/photos/:id/cover', (req, res) => {
   const p = q.photos.byId(Number(req.params.id));
-  if (p) q.jobs.setCover(p.job_id, p.id);
+  if (p) { q.jobs.setCover(p.job_id, p.id); announcePhotoJob(p.id); }
   res.json({ ok: !!p });
 });
 r.post('/photos/:id/delete', async (req, res, next) => {
@@ -246,6 +260,7 @@ r.post('/photos/:id/delete', async (req, res, next) => {
     q.photos.remove(p.id);
     await images.deletePhotoFiles(job.slug, p.base);
     if (job.cover_photo_id === p.id) { const first = q.photos.forJob(job.id)[0]; q.jobs.setCover(job.id, first ? first.id : null); }
+    if (job.published) indexnow.queue(indexnow.jobPages(job));
     res.json({ ok: true });
   } catch (e) { next(e); }
 });
@@ -271,6 +286,7 @@ r.get('/settings', (req, res) => {
 });
 r.post('/settings', (req, res) => {
   q.tx(() => { for (const k of Object.keys(DEFAULTS.settings)) if (k in req.body) q.settings.set(k, String(req.body[k]).trim().slice(0, 500)); });
+  indexnow.queue(indexnow.MAIN_PAGES);
   req.session.flash = 'Settings saved.';
   res.redirect('/admin/settings');
 });
