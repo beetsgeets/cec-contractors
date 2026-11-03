@@ -13,11 +13,43 @@ function withCovers(jobs) {
 }
 function safeScope(s) { try { return JSON.parse(s || '[]'); } catch { return []; } }
 
+// The jobs the site launched with, by permanent id (the seed loads them in this
+// order into an empty table). Pages that feature a particular job refer to it this
+// way, so retitling a job in the admin can't break them. Each list is in order of
+// preference: the first published job with a photo wins, so deleting or hiding one
+// just falls through to the next.
+const SEED = {
+  livingRoom: 1, thirdFloor: 2, staircase: 3, porchOffice: 4, coveredPatio: 5,
+  chesterlandKitchen: 6, bookcaseDoor: 9, ohioCityThirdFloor: 10, ohioCityPorch: 11,
+  gordonParkPorch: 12, timberStairs: 13, westShoreChurch: 14, lakewoodChurchInterior: 15,
+  stoneMad: 17,
+};
+const SERVICE_JOBS = {
+  1: [SEED.livingRoom, SEED.bookcaseDoor, SEED.thirdFloor],
+  2: [SEED.staircase, SEED.timberStairs],
+  3: [SEED.porchOffice, SEED.chesterlandKitchen, SEED.ohioCityThirdFloor],
+  4: [SEED.gordonParkPorch, SEED.livingRoom, SEED.ohioCityPorch],
+  5: [SEED.coveredPatio, SEED.ohioCityPorch],
+  6: [SEED.westShoreChurch, SEED.lakewoodChurchInterior, SEED.stoneMad],
+};
+
+function publishedJobs(ids) {
+  return ids.map(id => q.jobs.byId(id)).filter(j => j && j.published);
+}
+
+// "How we work" photo: the temporary dust wall from the church interior job.
+function howWeWorkPhoto() {
+  const job = publishedJobs([SEED.lakewoodChurchInterior])[0];
+  if (!job) return { job: null, photo: null };
+  const photos = q.photos.forJob(job.id);
+  return { job, photo: photos[3] || photos[0] || null };
+}
+
 function heroImage(settings) {
   // settings.hero_image = "<slug>/<base>" ; blank = first featured job's cover
   if (settings.hero_image && settings.hero_image.includes('/')) {
     const [slug, base] = settings.hero_image.split('/');
-    const job = q.jobs.bySlug(slug);
+    const job = q.jobs.bySlug(slug) || q.aliases.jobFor(slug);
     if (job) {
       const p = q.photos.forJob(job.id).find(x => x.base === base);
       if (p) return { url: images.url(job.slug, p.base, 'large'), w: p.w, h: p.h, job };
@@ -31,23 +63,17 @@ function heroImage(settings) {
 r.get('/', (req, res) => {
   const featured = withCovers(q.jobs.featured(6));
   const series = withCovers(q.jobs.seriesAll('cleveland-heights-house'));
-  const howPhotoJob = q.jobs.bySlug('lakewood-presbyterian-church-interior-repair');
-  const howPhoto = howPhotoJob ? q.photos.forJob(howPhotoJob.id)[3] : null;
-  const servicesJobs = {
-    1: q.jobs.bySlug('cleveland-heights-living-room-restoration'),
-    2: q.jobs.bySlug('cleveland-heights-staircase-rebuild'),
-    3: q.jobs.bySlug('lakewood-porch-to-office-conversion'),
-    4: q.jobs.bySlug('gordon-park-front-porch-restoration'),
-    5: q.jobs.bySlug('ohio-city-covered-patio'),
-    6: q.jobs.bySlug('west-shore-unitarian-universalist-church-sanctuary'),
-  };
+  const how = howWeWorkPhoto();
   const covers = q.photos.covers();
-  const serviceCards = [1, 2, 3, 4, 5, 6].map(n => ({ n, job: servicesJobs[n], cover: servicesJobs[n] ? covers[servicesJobs[n].id] : null }));
+  const serviceCards = [1, 2, 3, 4, 5, 6].map(n => {
+    const job = publishedJobs(SERVICE_JOBS[n]).find(j => covers[j.id]) || null;
+    return { n, job, cover: job ? covers[job.id] : null };
+  });
   res.render('home', {
     title: null,
     description: 'Residential and commercial carpentry, remodeling, and millwork across Greater Cleveland. One crew, start to finish. Formerly Cutting Edge Carpentry.',
     hero: heroImage(res.locals.settings),
-    featured, series, howPhoto, howPhotoJob, serviceCards,
+    featured, series, howPhoto: how.photo, howPhotoJob: how.job, serviceCards,
   });
 });
 
@@ -63,7 +89,13 @@ r.get('/work', (req, res) => {
 
 r.get('/work/:slug', (req, res, next) => {
   const job = q.jobs.bySlug(req.params.slug);
-  if (!job || (!job.published && !req.user)) return next();
+  if (!job) {
+    // an old address for a job that's since been retitled
+    const moved = q.aliases.jobFor(req.params.slug);
+    if (moved && (moved.published || req.user)) return res.redirect(301, `/work/${moved.slug}`);
+    return next();
+  }
+  if (!job.published && !req.user) return next();
   const photos = q.photos.forJob(job.id);
   const siblings = job.series ? withCovers(q.jobs.series(job.series, job.id)) : [];
   const { prev, next: nxt } = q.jobs.neighbors(job);
@@ -77,22 +109,13 @@ r.get('/work/:slug', (req, res, next) => {
 });
 
 r.get('/services', (req, res) => {
-  const pick = (slugs) => withCovers(slugs.map(s => q.jobs.bySlug(s)).filter(Boolean));
-  const groups = [
-    { n: 1, jobs: pick(['cleveland-heights-living-room-restoration', 'lakewood-secret-bookcase-door', 'cleveland-heights-third-floor-renovation']) },
-    { n: 2, jobs: pick(['cleveland-heights-staircase-rebuild', 'timber-frame-stairs-and-railing']) },
-    { n: 3, jobs: pick(['lakewood-porch-to-office-conversion', 'chesterland-kitchen-remodel', 'ohio-city-third-floor-interior-finish']) },
-    { n: 4, jobs: pick(['gordon-park-front-porch-restoration', 'cleveland-heights-living-room-restoration', 'ohio-city-front-porch-and-rear-deck']) },
-    { n: 5, jobs: pick(['ohio-city-covered-patio', 'ohio-city-front-porch-and-rear-deck']) },
-    { n: 6, jobs: pick(['west-shore-unitarian-universalist-church-sanctuary', 'lakewood-presbyterian-church-interior-repair', 'stone-mad-catering-kitchen']) },
-  ];
+  const groups = [1, 2, 3, 4, 5, 6].map(n => ({ n, jobs: withCovers(publishedJobs(SERVICE_JOBS[n])) }));
   res.render('services', { title: 'Services', description: 'Finish carpentry and millwork, stairs, remodeling and additions, historic restoration, porches and outdoor structures, and commercial carpentry in Greater Cleveland.', groups });
 });
 
 r.get('/about', (req, res) => {
-  const howJob = q.jobs.bySlug('lakewood-presbyterian-church-interior-repair');
-  const howPhoto = howJob ? q.photos.forJob(howJob.id)[3] : null;
-  res.render('about', { title: 'About', description: 'A family carpentry and construction company serving Greater Cleveland. Formerly Cutting Edge Carpentry.', howJob, howPhoto });
+  const how = howWeWorkPhoto();
+  res.render('about', { title: 'About', description: 'A family carpentry and construction company serving Greater Cleveland. Formerly Cutting Edge Carpentry.', howJob: how.job, howPhoto: how.photo });
 });
 
 r.get('/contact', (req, res) => {

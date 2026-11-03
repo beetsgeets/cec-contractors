@@ -70,8 +70,8 @@
     </div>
     <div class="services-grid">
       <% serviceCards.forEach(s => { %>
-        <a class="service" href="/services#service-<%= s.n %>">
-          <span class="service-img"><% if (s.cover && s.job) { %><img src="<%= img(s.job.slug, s.cover.base, 'thumb') %>" alt="" loading="lazy" width="640" height="480"><% } %></span>
+        <a class="service<%= (s.cover && s.job) ? '' : ' service-noimg' %>" href="/services#service-<%= s.n %>">
+          <% if (s.cover && s.job) { %><span class="service-img"><img src="<%= img(s.job.slug, s.cover.base, 'thumb') %>" alt="" loading="lazy" width="640" height="480"></span><% } %>
           <span class="service-text">
             <span class="service-title"><%- t(`services.${s.n}.title`) %></span>
             <span class="service-body"><%- t(`services.${s.n}.body`, { multi: false }) %></span>

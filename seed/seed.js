@@ -80,7 +80,29 @@ function reorderSeededPhotos() {
   return { applied: true, jobs: touched };
 }
 
-module.exports = { seed, reorderSeededPhotos };
+// One-time fix: before job addresses were frozen, retitling a job changed its
+// address. The seed loads jobs in file order into an empty table, so job N is the
+// Nth seed job; any whose address has since changed keeps its original address
+// as an alias, so old links still lead to it.
+function backfillSlugAliases() {
+  if (q.meta.get('slug_aliases_v1') === '1') return { applied: false };
+  const jobsFile = path.join(__dirname, 'jobs.json');
+  if (!fs.existsSync(jobsFile)) return { applied: false };
+  const jobs = JSON.parse(fs.readFileSync(jobsFile, 'utf8')).jobs;
+  let added = 0;
+  q.tx(() => {
+    jobs.forEach((j, idx) => {
+      const job = q.jobs.byId(idx + 1);
+      if (!job || job.slug === j.slug || q.jobs.bySlug(j.slug)) return;
+      q.aliases.add(j.slug, job.id);
+      added++;
+    });
+    q.meta.set('slug_aliases_v1', '1');
+  });
+  return { applied: true, added };
+}
+
+module.exports = { seed, reorderSeededPhotos, backfillSlugAliases };
 
 if (require.main === module) {
   const r = seed({ force: process.argv.includes('--force') });

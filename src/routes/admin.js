@@ -200,8 +200,9 @@ r.post('/jobs/:id', upload.array('photos', 40), async (req, res, next) => {
       for (const f of req.files || []) await fs.rm(f.path, { force: true });
       return res.status(422).render('admin/job-form', { title: `Edit: ${job.title}`, job, photos: q.photos.forJob(job.id), errors, form: req.body, flash: null });
     }
-    // keep the slug stable unless the title/town changed enough to make a new one
-    if (j.slug !== job.slug) await images.renameJobFolder(job.slug, j.slug);
+    // A job's web address is set when it's first posted and never changes after,
+    // so editing the title or town can't break links or the pages that feature it.
+    j.slug = job.slug;
     q.jobs.update(job.id, j);
     const updated = q.jobs.byId(job.id);
     const results = await addPhotos(updated, req.files || [], q.photos.maxPosition(job.id));

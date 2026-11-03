@@ -85,6 +85,12 @@ CREATE TABLE IF NOT EXISTS invites (
   used_at TEXT,
   used_by INTEGER
 );
+
+-- Old job web addresses that should still lead to the job (e.g. after a retitle).
+CREATE TABLE IF NOT EXISTS slug_aliases (
+  slug TEXT PRIMARY KEY,
+  job_id INTEGER NOT NULL REFERENCES jobs(id) ON DELETE CASCADE
+);
 `);
 
 // ---- helpers ---------------------------------------------------------------
@@ -145,6 +151,13 @@ const q = {
         LEFT JOIN photos p ON p.id = COALESCE(j.cover_photo_id, (SELECT id FROM photos WHERE job_id=j.id ORDER BY position ASC, id ASC LIMIT 1))`).all();
       return Object.fromEntries(rows.map(r => [r.job_id, r.id ? r : null]));
     },
+  },
+  aliases: {
+    jobFor: (slug) => {
+      const r = db.prepare('SELECT job_id FROM slug_aliases WHERE slug=?').get(slug);
+      return r ? db.prepare('SELECT * FROM jobs WHERE id=?').get(r.job_id) : undefined;
+    },
+    add: (slug, jobId) => db.prepare('INSERT OR IGNORE INTO slug_aliases(slug, job_id) VALUES(?,?)').run(slug, jobId),
   },
   invites: {
     create: (token, by) => db.prepare('INSERT INTO invites(token,created_by) VALUES(?,?)').run(token, by),
