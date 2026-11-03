@@ -13,7 +13,7 @@ const DEFAULTS = {
     email_primary: 'mike@cutting-edgecarpentry.com',
     email_secondary: 'matt@cutting-edgecarpentry.com',
     lead_emails: 'mike@cutting-edgecarpentry.com, matt@cutting-edgecarpentry.com',
-    service_area: 'Cuyahoga, Lake, Geauga, and Medina counties',
+    service_area: 'Cuyahoga, Lake, Geauga, Summit, Medina, and Lorain counties',
     service_area_short: 'Greater Cleveland',
     facebook_url: 'https://www.facebook.com/profile.php?id=100092479696505',
     hero_image: '', // e.g. "cleveland-heights-living-room-restoration/01" — blank = first featured job's cover
@@ -69,7 +69,7 @@ const DEFAULTS = {
     'about.body': 'CEC Contractors is a family carpentry and construction company based in Lake County, serving Greater Cleveland. The company began as Cutting Edge Carpentry, and the initials carry the name forward.\n\nMike has spent his career in carpentry and estimating, and still prices and runs our jobs. Matt has been doing carpentry since he was thirteen and runs the company today. Between the two of us there are several decades of finish work in some of the most carefully kept homes and buildings in Northeast Ohio.\n\nWe stay small on purpose. The people who give you the estimate are the people who show up to do the work.',
     'about.how.title': 'How we work',
     'about.area.title': 'Where we work',
-    'about.area.body': 'Cuyahoga, Lake, Geauga, and Medina counties. If you are a little outside that, ask; we have traveled for the right project.',
+    'about.area.body': 'Cuyahoga, Lake, Geauga, Summit, Medina, and Lorain counties.',
     'about.insured.title': 'Fully insured',
     'about.insured.body': 'We carry liability insurance and can provide a certificate on request.',
 

@@ -146,7 +146,8 @@ r.get('/about', (req, res) => {
 });
 
 r.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Request an estimate', description: 'Call Mike or send project details for a free estimate. Serving Cuyahoga, Lake, Geauga, and Medina counties.', sent: req.query.sent === '1', errors: null, form: {} });
+  const s = res.locals.settings;
+  res.render('contact', { title: 'Request an estimate', description: `Call ${s.phone_primary_name || 'us'} or send project details for a free estimate. Serving ${s.service_area}.`, sent: req.query.sent === '1', errors: null, form: {} });
 });
 
 // Simple per-IP throttle for the contact form: 5 per hour.
