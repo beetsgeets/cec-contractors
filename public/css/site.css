@@ -1,6 +1,7 @@
 /* CEC Contractors — site styles
    Palette from the brand guide: navy, sky, paper, cream, charcoal, slate, stone. */
 :root {
+  color-scheme: light only; /* the site has one look; ask browsers not to auto-darken it */
   --navy: #00263A;
   --navy-2: #0B3A55;
   --sky: #8EC9E8;

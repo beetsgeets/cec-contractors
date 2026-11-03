@@ -252,10 +252,17 @@ r.post('/photos/:id/delete', async (req, res, next) => {
 
 // ---- leads -------------------------------------------------------------------------------
 r.get('/leads', (req, res) => {
-  const archived = req.query.archived === '1';
-  res.render('admin/leads', { title: 'Estimate requests', leads: q.leads.all(archived ? 1 : 0), archived });
+  const spam = req.query.spam === '1';
+  const archived = !spam && req.query.archived === '1';
+  const leads = spam ? q.leads.spam() : q.leads.all(archived ? 1 : 0);
+  res.render('admin/leads', { title: 'Estimate requests', leads, archived, spam, spamCount: q.leads.countSpam() });
 });
 r.post('/leads/:id/archive', (req, res) => { q.leads.setArchived(Number(req.params.id), req.body.on !== '0'); res.redirect(req.body.on === '0' ? '/admin/leads?archived=1' : '/admin/leads'); });
+r.post('/leads/:id/spam', (req, res) => {
+  const on = req.body.on !== '0';
+  q.leads.setSpam(Number(req.params.id), on, 'Marked by you');
+  res.redirect(on ? '/admin/leads' : '/admin/leads?spam=1');
+});
 
 // ---- settings + users ----------------------------------------------------------------------
 r.get('/settings', (req, res) => {

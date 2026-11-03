@@ -3,11 +3,19 @@
 <main class="wrap adm-main">
   <div class="adm-top">
     <h1 class="h2">Estimate requests</h1>
-    <nav class="filters"><a href="/admin/leads" <%= !archived ? 'aria-current="true"' : '' %>>New</a><a href="/admin/leads?archived=1" <%= archived ? 'aria-current="true"' : '' %>>Done</a></nav>
+    <nav class="filters">
+      <a href="/admin/leads" <%= (!archived && !spam) ? 'aria-current="true"' : '' %>>New</a>
+      <a href="/admin/leads?archived=1" <%= archived ? 'aria-current="true"' : '' %>>Done</a>
+      <a href="/admin/leads?spam=1" <%= spam ? 'aria-current="true"' : '' %>>Probably spam<%= spamCount ? ` (${spamCount})` : '' %></a>
+    </nav>
   </div>
-  <p class="muted">Everything sent through the website form lands here, and is also emailed to <%= settings.lead_emails %>.</p>
+  <% if (spam) { %>
+    <p class="muted">Sales pitches sent through the form (SEO, marketing, loans and the like) land here instead of your inbox. Nothing is deleted. If a real customer ever ends up here, tap <strong>Not spam</strong> to move it to New.</p>
+  <% } else { %>
+    <p class="muted">Everything sent through the website form lands here, and is also emailed to <%= settings.lead_emails %>. Obvious sales pitches skip your inbox and go to <a href="/admin/leads?spam=1">Probably spam</a>.</p>
+  <% } %>
   <% if (!leads.length) { %>
-    <p class="notice"><%= archived ? 'Nothing marked done yet.' : 'No new requests. When someone fills out the form on the Contact page, it shows up here.' %></p>
+    <p class="notice"><%= spam ? 'No spam caught yet.' : archived ? 'Nothing marked done yet.' : 'No new requests. When someone fills out the form on the Contact page, it shows up here.' %></p>
   <% } %>
   <% leads.forEach(l => { %>
     <article class="lead">
@@ -19,10 +27,16 @@
         <% if (l.phone) { %><a href="tel:<%= l.phone.replace(/\D/g,'') %>"><%= l.phone %></a><% } %>
         <% if (l.email) { %><a href="mailto:<%= l.email %>"><%= l.email %></a><% } %>
         <% if (l.project_type) { %><span class="pill pill-grey"><%= l.project_type %></span><% } %>
-        <% if (!l.emailed) { %><span class="pill pill-warn" title="The email didn’t go out, but the request is saved here.">Email not sent</span><% } %>
+        <% if (spam && l.spam_reason) { %><span class="pill pill-grey"><%= l.spam_reason %></span><% } %>
+        <% if (!spam && !l.emailed) { %><span class="pill pill-warn" title="The email didn’t go out, but the request is saved here.">Email not sent</span><% } %>
       </p>
       <p class="lead-msg"><%= l.message %></p>
-      <form method="post" action="/admin/leads/<%= l.id %>/archive" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="<%= archived ? '0' : '1' %>"><button class="btn btn-outline btn-sm" type="submit"><%= archived ? 'Move back to new' : 'Mark done' %></button></form>
+      <% if (spam) { %>
+        <form method="post" action="/admin/leads/<%= l.id %>/spam" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="0"><button class="btn btn-outline btn-sm" type="submit">Not spam</button></form>
+      <% } else { %>
+        <form method="post" action="/admin/leads/<%= l.id %>/archive" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="<%= archived ? '0' : '1' %>"><button class="btn btn-outline btn-sm" type="submit"><%= archived ? 'Move back to new' : 'Mark done' %></button></form>
+        <% if (!archived) { %><form method="post" action="/admin/leads/<%= l.id %>/spam" class="inline"><input type="hidden" name="_csrf" value="<%= csrf %>"><input type="hidden" name="on" value="1"><button class="linkbtn" type="submit">It’s spam</button></form><% } %>
+      <% } %>
     </article>
   <% }) %>
 </main>

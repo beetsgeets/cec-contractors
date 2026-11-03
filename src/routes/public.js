@@ -3,6 +3,7 @@ const { q } = require('../db');
 const cfg = require('../config');
 const images = require('../lib/images');
 const { sendLeadEmail } = require('../lib/mail');
+const { spamReason } = require('../lib/spam');
 
 const r = express.Router();
 
@@ -181,7 +182,10 @@ r.post('/contact', async (req, res) => {
   if (!allowSend(req.ip)) {
     return res.status(429).render('contact', { title: 'Request an estimate', description: '', sent: false, errors: { message: 'That’s a lot of requests from one place. Give us a call instead.' }, form });
   }
-  const id = q.leads.insert(form);
+  // Obvious sales pitches are saved under "Probably spam" in the admin but not emailed.
+  const reason = spamReason(form);
+  const id = q.leads.insert({ ...form, spam: reason ? 1 : 0, spam_reason: reason || '' });
+  if (reason) return res.redirect('/contact?sent=1');
   const to = (res.locals.settings.lead_emails || cfg.MAIL_TO || '').split(',');
   try {
     const r2 = await sendLeadEmail({ ...form, id }, to, `${req.protocol}://${req.get('host')}`);

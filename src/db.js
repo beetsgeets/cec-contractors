@@ -87,11 +87,19 @@ CREATE TABLE IF NOT EXISTS invites (
 );
 
 -- Old job web addresses that should still lead to the job (e.g. after a retitle).
+-- (leads.spam / leads.spam_reason are added below for databases created before them)
 CREATE TABLE IF NOT EXISTS slug_aliases (
   slug TEXT PRIMARY KEY,
   job_id INTEGER NOT NULL REFERENCES jobs(id) ON DELETE CASCADE
 );
 `);
+
+// Columns added after launch.
+{
+  const leadCols = db.prepare('PRAGMA table_info(leads)').all().map(c => c.name);
+  if (!leadCols.includes('spam')) db.exec("ALTER TABLE leads ADD COLUMN spam INTEGER NOT NULL DEFAULT 0");
+  if (!leadCols.includes('spam_reason')) db.exec("ALTER TABLE leads ADD COLUMN spam_reason TEXT NOT NULL DEFAULT ''");
+}
 
 // ---- helpers ---------------------------------------------------------------
 const q = {
@@ -167,12 +175,16 @@ const q = {
     revoke: (token) => db.prepare('DELETE FROM invites WHERE token=?').run(token),
   },
   leads: {
-    insert: (l) => db.prepare('INSERT INTO leads(name,phone,email,town,project_type,message) VALUES(@name,@phone,@email,@town,@project_type,@message)').run(l).lastInsertRowid,
+    insert: (l) => db.prepare('INSERT INTO leads(name,phone,email,town,project_type,message,spam,spam_reason) VALUES(@name,@phone,@email,@town,@project_type,@message,@spam,@spam_reason)').run({ spam: 0, spam_reason: '', ...l }).lastInsertRowid,
     markEmailed: (id) => db.prepare('UPDATE leads SET emailed=1 WHERE id=?').run(id),
-    all: (archived = 0) => db.prepare('SELECT * FROM leads WHERE archived=? ORDER BY id DESC').all(archived),
+    all: (archived = 0) => db.prepare('SELECT * FROM leads WHERE archived=? AND spam=0 ORDER BY id DESC').all(archived),
+    spam: () => db.prepare('SELECT * FROM leads WHERE spam=1 ORDER BY id DESC LIMIT 200').all(),
     byId: (id) => db.prepare('SELECT * FROM leads WHERE id=?').get(id),
     setArchived: (id, a) => db.prepare('UPDATE leads SET archived=? WHERE id=?').run(a ? 1 : 0, id),
-    countNew: () => db.prepare('SELECT COUNT(*) c FROM leads WHERE archived=0').get().c,
+    setSpam: (id, on, reason = '') => db.prepare('UPDATE leads SET spam=?, spam_reason=? WHERE id=?').run(on ? 1 : 0, on ? reason : '', id),
+    countNew: () => db.prepare('SELECT COUNT(*) c FROM leads WHERE archived=0 AND spam=0').get().c,
+    countSpam: () => db.prepare('SELECT COUNT(*) c FROM leads WHERE spam=1').get().c,
+    unarchived: () => db.prepare('SELECT * FROM leads WHERE archived=0 AND spam=0').all(),
   },
   tx: (fn) => db.transaction(fn)(),
 };
